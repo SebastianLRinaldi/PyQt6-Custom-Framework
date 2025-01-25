@@ -1,0 +1,6 @@
+from FrontEnd.E_GroupBuilds.WidgetGroupBuilds import *
+from FrontEnd.E_GroupBuilds.TabGroupBuilds import *
+
+exploreTab.add_widges_to_tab(
+            playerControls,
+            title="Search")
