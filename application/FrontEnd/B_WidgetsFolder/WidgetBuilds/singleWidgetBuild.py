@@ -1,4 +1,4 @@
-from FrontEnd.B_WidgetConfiguration.widgetConfiguration import *
+from FrontEnd.B_WidgetsFolder.WidgetConfigurations.widgetConfiguration import *
 
 button = Button("A Build Button")
 tableLabel = TrackTableLabel("A Build Label")

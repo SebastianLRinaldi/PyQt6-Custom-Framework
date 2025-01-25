@@ -1,5 +1,6 @@
 from FrontEnd.A_frameworks.widgetGroupFrameworks import WidgetGroup
-from FrontEnd.C_WidgetBuild.singleWidgetBuilds import button, tableLabel
+from FrontEnd.B_WidgetsFolder.WidgetBuilds.singleWidgetBuild import *
+
 
 
 

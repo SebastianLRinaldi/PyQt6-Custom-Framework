@@ -21,9 +21,14 @@ from FrontEnd.A_frameworks.widgetFrameworks import ConnectedWidget, IsolatedWidg
 
 
 class GridLayout(QGridLayout):
-    def __init__(self, *widgets):
+    def __init__(self, window: QMainWindow, *widgets):
         super().__init__()  # No arguments here
         for index, widget in enumerate(widgets):
+            print(widget)
+            try:
+                widget.set_MainWindow(window)
+            except Exception as e:
+                print(f"Exception: {e}")
             self.setWidgetPosition(index, widget)
 
     def setWidgetPosition(self, index, widget: Union[ConnectedWidget, IsolatedWidget]):

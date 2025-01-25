@@ -10,7 +10,7 @@ class Window(QMainWindow):
     
 
     def setup_central_widget(self, *widgets):
-        grid_layout = GridLayout(*widgets)
+        grid_layout = GridLayout(self.window, *widgets)
         central_widget = Widget(grid_layout)
         self.setCentralWidget(central_widget)
 
