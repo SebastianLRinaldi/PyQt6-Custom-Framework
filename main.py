@@ -1,4 +1,4 @@
-from FrontEnd.presentation.presentation import *
+from application.FrontEnd.presentation.presentation import *
 
 def main():
     app = QApplication(sys.argv)

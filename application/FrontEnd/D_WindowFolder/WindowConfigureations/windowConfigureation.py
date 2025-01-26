@@ -1,5 +1,5 @@
-from FrontEnd.A_frameworks.gridLayoutFrameworks import *
-from FrontEnd.A_frameworks.widgetFrameworks import *
+from application.FrontEnd.A_frameworks.gridLayoutFrameworks import *
+from application.FrontEnd.A_frameworks.widgetFrameworks import *
 
 class Window(QMainWindow):
     def __init__(self):
@@ -13,6 +13,7 @@ class Window(QMainWindow):
         grid_layout = GridLayout(*widgets, window=self.window)
         central_widget = Widget(grid_layout)
         self.setCentralWidget(central_widget)
+        return self
 
     def show_window(self):
         self.show()

@@ -17,7 +17,7 @@ from PyQt6.QtGui import *
 
 from PyQt6.QtNetwork import QNetworkAccessManager, QNetworkRequest, QNetworkReply
 
-from FrontEnd.A_frameworks.widgetFrameworks import ConnectedWidget, IsolatedWidget
+from application.FrontEnd.A_frameworks.widgetFrameworks import ConnectedWidget, IsolatedWidget
 
 
 class GridLayout(QGridLayout):

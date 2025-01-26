@@ -1,3 +1,3 @@
-from FrontEnd.B_WidgetsFolder.WidgetBuilds.WidgetBuild import *
+from application.FrontEnd.B_WidgetsFolder.WidgetInitializations.WidgetInitialization import *
 
-button.clicked.connect(tableLabel.update_label)
+button.clicked.connect(lambda: label.setText("Hello"))

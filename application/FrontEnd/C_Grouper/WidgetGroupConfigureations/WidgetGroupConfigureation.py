@@ -1,4 +1,4 @@
-from FrontEnd.A_frameworks.widgetGroupFrameworks import WidgetGroup
+from application.FrontEnd.A_frameworks.widgetGroupFrameworks import WidgetGroup
 
 
 """
@@ -10,34 +10,6 @@ class PlayerControls(WidgetGroup):
     def __init__(self, widgetRow = -1, widgetCol = -1):
         super().__init__(widgetRow, widgetCol)
         
-        # Create and arrange buttons/widgets specific to PlayerControls
-        # self.set_grid_layout(
-        #     button,
-        #     table,
-        #     tableLabel,
-            
-        # )
-
-class PlayerControls1(WidgetGroup):
-    def __init__(self, widgetRow = -1, widgetCol = -1):
-        super().__init__(widgetRow, widgetCol)
-        
-        # Create and arrange buttons/widgets specific to PlayerControls
-        # self.set_grid_layout(
-        #     button1,
-        #     tableLabel1,
-        # )
-        
-        
-class PlayerControls2(WidgetGroup):
-    def __init__(self, widgetRow = -1, widgetCol = -1):
-        super().__init__(widgetRow, widgetCol)
-        
-        # Create and arrange buttons/widgets specific to PlayerControls
-        # self.set_grid_layout(
-        #     button2,
-        #     tableLabel2,
-        # )
 
 
 

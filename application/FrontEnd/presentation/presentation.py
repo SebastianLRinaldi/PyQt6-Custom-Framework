@@ -16,7 +16,7 @@ from PyQt6.QtWidgets import *
 from PyQt6.QtGui import *
 
 from PyQt6.QtNetwork import QNetworkAccessManager, QNetworkRequest, QNetworkReply
-from FrontEnd.E_combiner.combiner import *
+from application.FrontEnd.E_combiner.combiner import *
 
 
 

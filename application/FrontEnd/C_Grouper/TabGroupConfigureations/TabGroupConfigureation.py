@@ -33,7 +33,7 @@ class Tab(QTabWidget):
                 layout.addWidget(widget, widgetRow, widgetCol)
             
         self.addTab(new_tab, title)
-
+        return self
 
 
 
