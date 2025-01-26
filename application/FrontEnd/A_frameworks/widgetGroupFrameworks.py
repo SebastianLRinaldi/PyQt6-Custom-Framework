@@ -11,7 +11,7 @@ class WidgetGroup(QWidget):
         self.widgetRow = widgetRow  # Row position in layout
         self.widgetCol = widgetCol  # Column position in layout
 
-    def set_grid_layout(self, *widgets):
+    def add_widgets_to_group(self, *widgets):
         grid_layout = GridLayout(*widgets)  # Arrange widgets in grid
         self.setLayout(grid_layout)  # Set the layout of the widget
         

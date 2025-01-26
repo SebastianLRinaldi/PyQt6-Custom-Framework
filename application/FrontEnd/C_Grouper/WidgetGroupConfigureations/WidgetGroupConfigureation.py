@@ -1,23 +1,43 @@
 from FrontEnd.A_frameworks.widgetGroupFrameworks import WidgetGroup
-from FrontEnd.B_WidgetsFolder.WidgetBuilds.singleWidgetBuild import *
 
 
-
-
+"""
+Like in our tabs we don't want to know the widgets when we crate it, we just want to make the group later with the build widgets later
+want to build a add widgets functions basically
+"""
 
 class PlayerControls(WidgetGroup):
     def __init__(self, widgetRow = -1, widgetCol = -1):
         super().__init__(widgetRow, widgetCol)
         
         # Create and arrange buttons/widgets specific to PlayerControls
-        self.set_grid_layout(
-            button,
-            tableLabel
+        # self.set_grid_layout(
+        #     button,
+        #     table,
+        #     tableLabel,
             
-            # PlayButtn(self.ui_handler, widgetRow=0, widgetCol=0, widgetRowSpan=1, widgetColSpan=2),  # Pass window and UIHandler
-            # PrevousTrackButtn(self.ui_handler, widgetRow=1, widgetCol=0, widgetRowSpan=1, widgetColSpan=1),
-            # NextTrackButtn(self.ui_handler, widgetRow=1, widgetCol=1, widgetRowSpan=1, widgetColSpan=1)
-        )
+        # )
+
+class PlayerControls1(WidgetGroup):
+    def __init__(self, widgetRow = -1, widgetCol = -1):
+        super().__init__(widgetRow, widgetCol)
+        
+        # Create and arrange buttons/widgets specific to PlayerControls
+        # self.set_grid_layout(
+        #     button1,
+        #     tableLabel1,
+        # )
+        
+        
+class PlayerControls2(WidgetGroup):
+    def __init__(self, widgetRow = -1, widgetCol = -1):
+        super().__init__(widgetRow, widgetCol)
+        
+        # Create and arrange buttons/widgets specific to PlayerControls
+        # self.set_grid_layout(
+        #     button2,
+        #     tableLabel2,
+        # )
 
 
 

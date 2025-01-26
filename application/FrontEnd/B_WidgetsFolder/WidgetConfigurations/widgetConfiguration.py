@@ -18,20 +18,22 @@ from PyQt6.QtNetwork import QNetworkAccessManager, QNetworkRequest, QNetworkRepl
 
 from FrontEnd.A_frameworks.widgetFrameworks import ConnectedWidget, IsolatedWidget
 
-class Button(QPushButton, ConnectedWidget):
-    def __init__(self, text="Click me!", widgetRow=-1, widgetCol=-1, widgetRowSpan=-1, widgetColSpan=-1):
-        super().__init__(text)
-        self.widgetRow = widgetRow
-        self.widgetCol = widgetCol
+class Button(QPushButton, IsolatedWidget):
+    def __init__(self, text="Click me!", widgetRow=-1, widgetCol=-1, widgetRowSpan=-1, widgetColSpan=-1, *args, **kwargs):
+        IsolatedWidget.__init__(self, widgetRow, widgetCol, widgetRowSpan, widgetColSpan, *args, **kwargs)
+        QPushButton.__init__(self, text, *args, **kwargs)
         
 class TrackTableLabel(QLabel, IsolatedWidget):
     def __init__(self, text="track_label", widgetRow=-1, widgetCol=-1):
         super().__init__(widgetRow=widgetRow, widgetCol=widgetCol)
         QLabel.__init__(self, text)
+        
+    def update_label(self):
+        self.setText("Updated")
 
-class TrackTabel(QListWidget, ConnectedWidget):
-    def __init__(self, ui_handler, widgetRow=-1, widgetCol=-1):
-        super().__init__(ui_handler, widgetRow, widgetCol)
+class TrackTabel(QListWidget, IsolatedWidget):
+    def __init__(self, widgetRow=-1, widgetCol=-1):
+        super().__init__( widgetRow, widgetCol)
         QListWidget.__init__(self)
 
     #     self.itemClicked.connect(self.on_item_clicked)
