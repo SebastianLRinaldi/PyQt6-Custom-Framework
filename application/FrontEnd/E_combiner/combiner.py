@@ -24,17 +24,22 @@ class combiner():
     def __init__(self):
 
         window.add_widgets_to_window(
+            calendar_widget,
             check_box,
-            exploreTab1.add_widges_to_tab(
+            exploreTab.add_widges_to_tab(
                 text_edit,
-                exploreTab.add_widges_to_tab(
+                exploreTab1.add_widges_to_tab(
                     label,
                     playerControls.add_widgets_to_group(
                         button,
                         ),
-                    title="Search2"
                 ),
-                title="Search1"
+            ),
+            exploreTab.add_widges_to_tab(
+                list_widget,
+            ),
+            exploreTab2.add_widges_to_tab(
+                radio_button,
             )
         )
         window.show_window()

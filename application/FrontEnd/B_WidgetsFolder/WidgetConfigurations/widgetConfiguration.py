@@ -154,14 +154,14 @@ class ProgressBar(QProgressBar, IsolatedWidget):
 #     def update_value(self, value):
 #         self.setValue(value)
 
-# class ListWidget(QListWidget, IsolatedWidget):
-#     def __init__(self, widgetRow=-1, widgetCol=-1, widgetRowSpan=-1, widgetColSpan=-1, *args, **kwargs):
-#         IsolatedWidget.__init__(self, widgetRow, widgetCol, widgetRowSpan, widgetColSpan, *args, **kwargs)
-#         QListWidget.__init__(self, *args, **kwargs)
+class ListWidget(QListWidget, IsolatedWidget):
+    def __init__(self, widgetRow=-1, widgetCol=-1, widgetRowSpan=-1, widgetColSpan=-1, *args, **kwargs):
+        IsolatedWidget.__init__(self, widgetRow, widgetCol, widgetRowSpan, widgetColSpan, *args, **kwargs)
+        QListWidget.__init__(self, *args, **kwargs)
 
-#     def update_items(self, items):
-#         self.clear()
-#         self.addItems(items)
+    def update_items(self, items):
+        self.clear()
+        self.addItems(items)
 
 
 class Label(QLabel, IsolatedWidget):
@@ -173,13 +173,13 @@ class Label(QLabel, IsolatedWidget):
         self.setText(text)
 
 
-# class CalendarWidget(QCalendarWidget, IsolatedWidget):
-#     def __init__(self, widgetRow=-1, widgetCol=-1, widgetRowSpan=-1, widgetColSpan=-1, *args, **kwargs):
-#         IsolatedWidget.__init__(self, widgetRow, widgetCol, widgetRowSpan, widgetColSpan, *args, **kwargs)
-#         QCalendarWidget.__init__(self, *args, **kwargs)
+class CalendarWidget(QCalendarWidget, IsolatedWidget):
+    def __init__(self, widgetRow=-1, widgetCol=-1, widgetRowSpan=-1, widgetColSpan=-1, *args, **kwargs):
+        IsolatedWidget.__init__(self, widgetRow, widgetCol, widgetRowSpan, widgetColSpan, *args, **kwargs)
+        QCalendarWidget.__init__(self, *args, **kwargs)
 
-#     def update_selected_date(self, date):
-#         self.setSelectedDate(date)
+    def update_selected_date(self, date):
+        self.setSelectedDate(date)
 
 
 # class DateEdit(QDateEdit, IsolatedWidget):
