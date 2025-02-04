@@ -1,6 +1,7 @@
 from application.FrontEnd.B_WidgetsFolder.WidgetInitializations.WidgetInitialization import *
 from application.FrontEnd.C_Grouper.TabGroupInitializations.TabGroupInitialization import *
 from application.FrontEnd.C_Grouper.WidgetGroupInitializations.WidgetGroupInitialization import *
+from application.FrontEnd.C_Grouper.SpliterGroupInitializations.SpliterGroupInitialization import *
 from application.FrontEnd.D_WindowFolder.WindowInitializations.windowInitialization import *
 from application.FrontEnd.E_combiner.connections import *
 
@@ -21,25 +22,38 @@ Basically want to see the nested widgets and tabs and groups
 
 class combiner():
     def __init__(self):
-
+        
         window.add_widgets_to_window(
-            calendar_widget,
-            check_box,
-            exploreMasterTab.add_widgets_as_seperate_tabs(
-                exploreTab0.add_widgets_to_group(
-                    text_edit,
-                    list_widget,
+            
+            middleSplit.add_widgets_to_spliter(
+                
+                topTab.add_groups_as_tabs(
+                    
+                    exploreTab0.add_widgets_to_group(
+                        # calendar_widget,
+                        list_widget,
+                    ),
+                    
+                    playerControls.add_widgets_to_group(
+                        button, 
+                    ),
                 ),
-                playerControls.add_widgets_to_group(
-                    button,  
-                ),
-                exploreTab1.add_widgets_to_group(
-                    label,
-                ),
-            ),
-
-            exploreTab2.add_widgets_to_group(
-                radio_button,
+                
+                bottomTab.add_groups_as_tabs(
+                    
+                        exploreTab1.add_widgets_to_group(
+                            text_edit, 
+                        ),
+                        
+                        exploreTab2.add_widgets_to_group(
+                            radio_button,
+                            label,  
+                        ),
+                        
+                        exploreTab3.add_widgets_to_group(
+                            check_box,
+                        )
+                    )
             )
         )
         window.show_window()

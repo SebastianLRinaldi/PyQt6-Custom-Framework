@@ -7,6 +7,9 @@ from PyQt6.QtNetwork import QNetworkAccessManager, QNetworkRequest, QNetworkRepl
 from PyQt6.QtWidgets import QTabWidget, QWidget, QGridLayout, QMainWindow
 from typing import List, Optional
 
+
+from application.FrontEnd.C_Grouper.WidgetGroupConfigureations.WidgetGroupConfigureation import WidgetGroup
+
 class MasterTabHolder(QTabWidget):
     def __init__(
         self,
@@ -21,6 +24,8 @@ class MasterTabHolder(QTabWidget):
         self.widgetCol = widgetCol
         self.widgetRowSpan = widgetRowSpan
         self.widgetColSpan = widgetColSpan
+        self.setTabShape(QTabWidget.TabShape.Triangular)
+        self.setMovable(True)
         
     def set_main_window(self, window: QMainWindow) -> None:
         """Set the main window parent."""
@@ -30,10 +35,10 @@ class MasterTabHolder(QTabWidget):
     def parent_window(self) -> Optional[QMainWindow]:
         return self._parent
     
-    def add_widgets_as_seperate_tabs(self, *tabs: QWidget):
-        """Add tabs to the master holder and return their indices."""
-        for tab in tabs:
-            self.addTab(tab, tab.title)
+    def add_groups_as_tabs(self, *pages: WidgetGroup):
+        """Add tabs to the master tab widget for the group of widgets as pages"""
+        for page in pages:
+            self.addTab(page, page.title)
         return self
    
 

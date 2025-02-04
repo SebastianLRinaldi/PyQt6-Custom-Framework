@@ -29,7 +29,10 @@ class GridLayout(QGridLayout):
             #     widget.set_MainWindow(window)
             # except Exception as e:
             #     print(f"Exception: {e}")
+            
+            
             self.setWidgetPosition(index, widget)
+
 
     def setWidgetPosition(self, index, widget: Union[ConnectedWidget, IsolatedWidget]):
         # print(f'WIDGET: {type(widget)}')

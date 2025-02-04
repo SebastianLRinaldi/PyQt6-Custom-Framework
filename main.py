@@ -1,12 +1,11 @@
 import sys
-from PyQt5.QtWidgets import QApplication
+from PyQt6.QtWidgets import QApplication
 from application.FrontEnd.presentation.presentation import run_pyqt
 
 
 
 def main():
     app = QApplication(sys.argv)
-    
     
     run_pyqt()
     

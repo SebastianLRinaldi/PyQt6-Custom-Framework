@@ -23,5 +23,10 @@ class Window(QMainWindow):
             QMainWindow {
                 background-color: #1a0d1c;
             }
+            
+            
+            QLabel {
+                background-color: #AAAAAA;
+            }
         """)
 
