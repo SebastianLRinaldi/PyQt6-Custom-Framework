@@ -22,4 +22,5 @@ from application.FrontEnd.E_combiner.combiner import *
 
 
 def run_pyqt():
+
     combiner()

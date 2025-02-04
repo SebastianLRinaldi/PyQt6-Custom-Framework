@@ -3,13 +3,18 @@ from PyQt6.QtWidgets import *
 from PyQt6.QtGui import *
 
 from application.FrontEnd.A_frameworks.gridLayoutFrameworks import GridLayout
-class WidgetGroup(QWidget):
-    def __init__(self, widgetRow = -1, widgetCol = -1):
+from application.FrontEnd.A_frameworks.widgetFrameworks import IsolatedWidget
+class WidgetGroup(IsolatedWidget):
+    def __init__(self, title=None, widgetRow=-1, widgetCol=-1, widgetRowSpan=-1, widgetColSpan=-1):
         super().__init__()
         # self.ui_handler = UIHandler(window)  # Create UIHandler instance directly
         self.window = None  # Store reference to the QMainWindow instance
         self.widgetRow = widgetRow  # Row position in layout
         self.widgetCol = widgetCol  # Column position in layout
+        self.widgetRowSpan = widgetRowSpan 
+        self.widgetColSpan = widgetColSpan 
+
+        self.title = title
 
     def add_widgets_to_group(self, *widgets):
         

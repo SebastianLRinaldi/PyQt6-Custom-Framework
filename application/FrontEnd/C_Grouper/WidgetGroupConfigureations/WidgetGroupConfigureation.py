@@ -7,8 +7,10 @@ want to build a add widgets functions basically
 """
 
 class PlayerControls(WidgetGroup):
-    def __init__(self, widgetRow = -1, widgetCol = -1):
-        super().__init__(widgetRow, widgetCol)
+    def __init__(self, title=None, widgetRow = -1, widgetCol = -1):
+        super().__init__(title, widgetRow, widgetCol)
+        
+        
         
 
 

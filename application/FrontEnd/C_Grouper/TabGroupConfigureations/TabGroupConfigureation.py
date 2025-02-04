@@ -4,39 +4,38 @@ from PyQt6.QtGui import *
 
 from PyQt6.QtNetwork import QNetworkAccessManager, QNetworkRequest, QNetworkReply
 
-class Tab(QTabWidget):
-    def __init__(self, title="New Tab", widgetRow=-1, widgetCol=-1, widgetRowSpan=-1, widgetColSpan=-1 ):
+from PyQt6.QtWidgets import QTabWidget, QWidget, QGridLayout, QMainWindow
+from typing import List, Optional
+
+class MasterTabHolder(QTabWidget):
+    def __init__(
+        self,
+        widgetRow: int = -1,
+        widgetCol: int = -1,
+        widgetRowSpan: int = -1,
+        widgetColSpan: int = -1
+    ):
         super().__init__()
-        self.parent = None
-        self.title = title
+        self._parent = None
         self.widgetRow = widgetRow
         self.widgetCol = widgetCol
-        self.widgetRowSpan = widgetRowSpan 
-        self.widgetColSpan = widgetColSpan 
+        self.widgetRowSpan = widgetRowSpan
+        self.widgetColSpan = widgetColSpan
         
-    def set_MainWindow(self, window: QMainWindow):
-        self.parent = window
-        
-    def add_widges_to_tab(self, *widgets):
-        new_tab = QWidget()
-        layout = QGridLayout(new_tab)
-        
-        for i, widget in enumerate(widgets):
-            widgetRow = widget.widgetRow #i // 1
-            widgetCol = widget.widgetCol#i % 1
-            
-            # print(f'TAB: {type(widget)}')
-            if widgetRow == -1 or widgetCol == -1:
-                widgetRow = i // 1
-                widgetCol = i % 1
-                layout.addWidget(widget, widgetRow, widgetCol)
-            else:
-                layout.addWidget(widget, widgetRow, widgetCol)
-            
-        self.addTab(new_tab, self.title)
-        self.setTabShape(QTabWidget.TabShape.Triangular)
-        self.setMovable(True)
+    def set_main_window(self, window: QMainWindow) -> None:
+        """Set the main window parent."""
+        self._parent = window
+    
+    @property
+    def parent_window(self) -> Optional[QMainWindow]:
+        return self._parent
+    
+    def add_widgets_as_seperate_tabs(self, *tabs: QWidget):
+        """Add tabs to the master holder and return their indices."""
+        for tab in tabs:
+            self.addTab(tab, tab.title)
         return self
+   
 
 
 

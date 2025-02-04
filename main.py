@@ -1,9 +1,16 @@
-from application.FrontEnd.presentation.presentation import *
+import sys
+from PyQt5.QtWidgets import QApplication
+from application.FrontEnd.presentation.presentation import run_pyqt
+
+
 
 def main():
     app = QApplication(sys.argv)
+    
+    
     run_pyqt()
-    app.exec()  
+    
+    return app.exec()  
     
 if __name__ == "__main__":
     main()

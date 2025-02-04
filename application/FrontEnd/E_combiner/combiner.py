@@ -19,7 +19,34 @@ Basically want to see the nested widgets and tabs and groups
 """
 
 
+class combiner():
+    def __init__(self):
 
+        window.add_widgets_to_window(
+            calendar_widget,
+            check_box,
+            exploreMasterTab.add_widgets_as_seperate_tabs(
+                exploreTab0.add_widgets_to_group(
+                    text_edit,
+                    list_widget,
+                ),
+                playerControls.add_widgets_to_group(
+                    button,  
+                ),
+                exploreTab1.add_widgets_to_group(
+                    label,
+                ),
+            ),
+
+            exploreTab2.add_widgets_to_group(
+                radio_button,
+            )
+        )
+        window.show_window()
+        
+        
+        
+"""
 class combiner():
     def __init__(self):
 
@@ -43,3 +70,4 @@ class combiner():
             )
         )
         window.show_window()
+""" 
