@@ -5,7 +5,8 @@ from queue import Queue
 
 
 class EventBus(QObject):
-    eventTriggered = pyqtSignal()
+    update_widget = pyqtSignal()
+    reset_widget = pyqtSignal()
     
     # def __init__(self):
     #     pass

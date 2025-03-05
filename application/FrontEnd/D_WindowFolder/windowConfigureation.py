@@ -1,6 +1,6 @@
-from application_draft.FrontEnd.A_frameworks.gridLayoutFrameworks import *
-from application_draft.FrontEnd.A_frameworks.widgetFrameworks import *
-from application_draft.FrontEnd.E_combiner.eventBus import EventBus
+from application.FrontEnd.A_frameworks.gridLayoutFrameworks import *
+from application.FrontEnd.A_frameworks.widgetFrameworks import *
+from application.FrontEnd.E_combiner.eventBus import EventBus
 
 from typing import Dict, TypeVar, Union
 
@@ -38,7 +38,6 @@ class WindowLayoutManager(QMainWindow):
                 background-color: #AAAAAA;
             }
         """)
-
 
 class Window:
     def __init__(self, event_bus: EventBus):

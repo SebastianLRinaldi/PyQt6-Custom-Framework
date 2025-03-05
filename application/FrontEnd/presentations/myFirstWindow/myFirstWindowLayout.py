@@ -16,24 +16,18 @@ from PyQt6.QtWidgets import *
 from PyQt6.QtGui import *
 
 
-from application_draft.FrontEnd.C_Grouper.TabGroupInitializations.TabGroupInitialization import *
-from application_draft.FrontEnd.C_Grouper.WidgetGroupInitializations.WidgetGroupInitialization import *
-from application_draft.FrontEnd.C_Grouper.SpliterGroupInitializations.SpliterGroupInitialization import *
+from application.FrontEnd.C_Grouper.TabGroupInitializations.TabGroupInitialization import *
+from application.FrontEnd.C_Grouper.WidgetGroupInitializations.WidgetGroupInitialization import *
+from application.FrontEnd.C_Grouper.SpliterGroupInitializations.SpliterGroupInitialization import *
 
-from application_draft.FrontEnd.presentations.myFirstWindow.myFirstWindowWidgets import *
-from application_draft.FrontEnd.presentations.myFirstWindow.myFirstWindowConnections import *
+from application.FrontEnd.presentations.myFirstWindow.myFirstWindowWidgets import *
+from application.FrontEnd.presentations.myFirstWindow.myFirstWindowConnections import *
 
-from application_draft.FrontEnd.D_WindowFolder.windowConfigureation import *
-from application_draft.FrontEnd.E_combiner.eventBus import *
-
-
-
+from application.FrontEnd.D_WindowFolder.windowConfigureation import *
+from application.FrontEnd.E_combiner.eventBus import *
 
 
 window = Window(event_bus)
-
-def something():
-    print("I did it")
 
 
 def my_first_page():
@@ -50,7 +44,8 @@ def my_first_page():
                     ),
                     
                     playerControls.add_widgets_to_group(
-                        button, 
+                        button,
+                        reset_button, 
                     ),
                 ),
                 

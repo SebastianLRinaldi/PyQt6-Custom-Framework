@@ -1,10 +1,12 @@
-from application.FrontEnd.B_WidgetsFolder.WidgetConfigurations.widgetConfiguration import *
+from application.FrontEnd.B_WidgetsFolder.widgetConfiguration import *
 
 # Button
 button = Button(text="A Build Button")
+reset_button = Button(text="A Build Button")
 
 # Label
 label = Label(text="Enter your name:")
+
 
 # LineEdit
 line_edit = LineEdit(text="Type something here")
@@ -21,4 +23,3 @@ list_widget = ListWidget()
 
 # TextEdit
 text_edit = TextEdit(text="This is a multi-line text editor")
-

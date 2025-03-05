@@ -1,12 +1,13 @@
 import sys
 from PyQt6.QtWidgets import QApplication
-from application_draft.FrontEnd.presentations.myFirstWindow.myFirstWindowLayout import *
-
+from application.FrontEnd.presentations.mySecondWindow.mySecondWindowLayout import *
+from application.FrontEnd.presentations.myFirstWindow.myFirstWindowLayout import *
 
 
 def main():
     app = QApplication(sys.argv)
     my_first_page()
+    my_second_page()
     
     return app.exec()  
     

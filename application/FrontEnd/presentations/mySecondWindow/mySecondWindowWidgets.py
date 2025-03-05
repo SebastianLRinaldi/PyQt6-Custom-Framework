@@ -1,10 +1,12 @@
-from application_draft.FrontEnd.B_WidgetsFolder.widgetConfiguration import *
+from application.FrontEnd.B_WidgetsFolder.widgetConfiguration import *
 
 # Button
 button = Button(text="A Build Button")
+reset_button = Button(text="A Build Button")
 
 # Label
-label = Label(text="Enter your name:")
+label2 = Label(text="Enter your name:")
+
 
 # LineEdit
 line_edit = LineEdit(text="Type something here")

@@ -1,9 +1,9 @@
-from application.FrontEnd.B_WidgetsFolder.WidgetInitializations.WidgetInitialization import *
-from application.FrontEnd.C_Grouper.TabGroupInitializations.TabGroupInitialization import *
-from application.FrontEnd.C_Grouper.WidgetGroupInitializations.WidgetGroupInitialization import *
-from application.FrontEnd.C_Grouper.SpliterGroupInitializations.SpliterGroupInitialization import *
-from application.FrontEnd.D_WindowFolder.WindowInitializations.windowInitialization import *
-from application.FrontEnd.E_combiner.connections import *
+# from application.FrontEnd.B_WidgetsFolder.WidgetInitializations.WidgetInitialization import *
+# from application.FrontEnd.C_Grouper.TabGroupInitializations.TabGroupInitialization import *
+# from application.FrontEnd.C_Grouper.WidgetGroupInitializations.WidgetGroupInitialization import *
+# from application.FrontEnd.C_Grouper.SpliterGroupInitializations.SpliterGroupInitialization import *
+# from application.FrontEnd.D_WindowFolder.WindowInitializations.windowInitialization import *
+# from application.FrontEnd.E_combiner.connections import *
 
 """
 Basically want to see the nested widgets and tabs and groups
@@ -20,44 +20,45 @@ Basically want to see the nested widgets and tabs and groups
 """
 
 
-class combiner():
-    def __init__(self):
+
+# class combiner():
+#     def __init__(self):
         
-        window.add_widgets_to_window(
+#         window.add_widgets_to_window(
             
-            middleSplit.add_widgets_to_spliter(
+#             middleSplit.add_widgets_to_spliter(
                 
-                calendar_widget,
+#                 calendar_widget,
                 
-                topTab.add_groups_as_tabs(
+#                 topTab.add_groups_as_tabs(
                     
-                    exploreTab0.add_widgets_to_group(
-                        list_widget,
-                    ),
+#                     exploreTab0.add_widgets_to_group(
+#                         list_widget,
+#                     ),
                     
-                    playerControls.add_widgets_to_group(
-                        button, 
-                    ),
-                ),
+#                     playerControls.add_widgets_to_group(
+#                         button, 
+#                     ),
+#                 ),
                 
-                bottomTab.add_groups_as_tabs(
+#                 bottomTab.add_groups_as_tabs(
                     
-                        exploreTab1.add_widgets_to_group(
-                            text_edit, 
-                        ),
+#                         exploreTab1.add_widgets_to_group(
+#                             text_edit, 
+#                         ),
                         
-                        exploreTab2.add_widgets_to_group(
-                            radio_button,
-                            label,  
-                        ),
+#                         exploreTab2.add_widgets_to_group(
+#                             radio_button,
+#                             label,  
+#                         ),
                         
-                        exploreTab3.add_widgets_to_group(
-                            check_box,
-                        )
-                    )
-            )
-        )
-        window.show_window()
+#                         exploreTab3.add_widgets_to_group(
+#                             check_box,
+#                         )
+#                     )
+#             )
+#         )
+#         window.show_window()
 
 
 
