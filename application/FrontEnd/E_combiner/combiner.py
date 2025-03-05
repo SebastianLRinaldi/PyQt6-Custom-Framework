@@ -27,10 +27,11 @@ class combiner():
             
             middleSplit.add_widgets_to_spliter(
                 
+                calendar_widget,
+                
                 topTab.add_groups_as_tabs(
                     
                     exploreTab0.add_widgets_to_group(
-                        # calendar_widget,
                         list_widget,
                     ),
                     
@@ -57,6 +58,50 @@ class combiner():
             )
         )
         window.show_window()
+
+
+
+
+
+
+# class combiner():
+#     def __init__(self):
+        
+#         window.add_widgets_to_window(
+            
+#             middleSplit.add_widgets_to_spliter(
+                
+#                 calendar_widget,
+                
+#                 topTab.add_groups_as_tabs(
+                    
+#                     exploreTab0.add_widgets_to_group(
+#                         list_widget,
+#                     ),
+                    
+#                     playerControls.add_widgets_to_group(
+#                         button, 
+#                     ),
+#                 ),
+                
+#                 bottomTab.add_groups_as_tabs(
+                    
+#                         exploreTab1.add_widgets_to_group(
+#                             text_edit, 
+#                         ),
+                        
+#                         exploreTab2.add_widgets_to_group(
+#                             radio_button,
+#                             label,  
+#                         ),
+                        
+#                         exploreTab3.add_widgets_to_group(
+#                             check_box,
+#                         )
+#                     )
+#             )
+#         )
+#         window.show_window()
         
         
         
