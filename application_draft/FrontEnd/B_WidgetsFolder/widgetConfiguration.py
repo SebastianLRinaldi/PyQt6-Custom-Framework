@@ -17,7 +17,7 @@ from PyQt6.QtGui import *
 
 from PyQt6.QtNetwork import QNetworkAccessManager, QNetworkRequest, QNetworkReply
 
-from application_draft.FrontEnd.A_frameworks.widgetFrameworks import ConnectedWidget, IsolatedWidget
+from application.FrontEnd.A_frameworks.widgetFrameworks import ConnectedWidget, IsolatedWidget
 
 class Button(QPushButton, IsolatedWidget):
     def __init__(self, text="Click me!", widgetRow=-1, widgetCol=-1, widgetRowSpan=-1, widgetColSpan=-1, *args, **kwargs):

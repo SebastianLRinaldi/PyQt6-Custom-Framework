@@ -1,13 +1,12 @@
 import sys
 from PyQt6.QtWidgets import QApplication
-from application.FrontEnd.presentation.presentation import run_pyqt
+from application_draft.FrontEnd.presentations.myFirstWindow.myFirstWindowLayout import *
 
 
 
 def main():
     app = QApplication(sys.argv)
-    
-    run_pyqt()
+    my_first_page()
     
     return app.exec()  
     
