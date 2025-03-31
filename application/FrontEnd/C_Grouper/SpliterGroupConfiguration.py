@@ -47,3 +47,4 @@ class MasterSpliterGroup(QSplitter):
 
 
 
+middleSplit = MasterSpliterGroup(orientation=Qt.Orientation.Vertical)

@@ -753,95 +753,123 @@ uses screen id but its not really needed since in the design each widget will be
 # if __name__ == "__main__":
 #     main()
 
-import sys
-from typing import Dict, TypeVar, Union
-from PyQt6.QtCore import QObject, pyqtSignal, QThread
-from PyQt6.QtWidgets import QApplication, QWidget, QVBoxLayout, QPushButton, QLabel
-from queue import Queue
-
-# Generic type for the widget dictionary
-Q = TypeVar('Q', bound=QWidget)
-
-class EventBus(QObject):
-    widget_update = pyqtSignal(str, dict)
-
-    def __init__(self):
-        super().__init__()
-        self._queue = Queue()
-        self._thread = QThread()
-        self.moveToThread(self._thread)
-        self._thread.started.connect(self._process_queue)
-        self._running = True
-
-    def start(self):
-        self._thread.start()
-
-    def stop(self):
-        self._running = False
-        self._thread.quit()
-        self._thread.wait()
-
-    def emit(self, event_type: str, *args: Union[str, dict]):
-        self._queue.put((event_type, args))
-
-    def _process_queue(self):
-        while self._running:
-            event_type, args = self._queue.get()
-            getattr(self, event_type).emit(*args)
-            self._queue.task_done()
 
 
-class ScreenBase(QWidget):
-    def __init__(self, event_bus: EventBus):
-        super().__init__()
-        self.event_bus = event_bus
-        self.widgets: Dict[str, Union[QPushButton, QLabel]] = {}  # Refined type hint here for clarity
-        layout = QVBoxLayout()
-        self.setLayout(layout)
+"""
+IF we want some type of "text" signal to be emited
+"""
+# import sys
+# from typing import Dict, TypeVar, Union
+# from PyQt6.QtCore import QObject, pyqtSignal, QThread
+# from PyQt6.QtWidgets import QApplication, QWidget, QVBoxLayout, QPushButton, QLabel
+# from queue import Queue
 
-    def add_widget(self, name: str, widget: QWidget) -> None:
-        widget.setObjectName(name)
-        self.widgets[name] = widget
-        self.layout().addWidget(widget)
+# # Generic type for the widget dictionary
+# Q = TypeVar('Q', bound=QWidget)
 
+# class EventBus(QObject):
+#     widget_update = pyqtSignal(str, dict)
 
-class MyScreen1(ScreenBase):
-    def __init__(self, event_bus: EventBus):
-        super().__init__(event_bus)
-        button = QPushButton("Click Me")
-        self.add_widget("button_click_me", button)
-        button.clicked.connect(self.on_click)
+#     def __init__(self):
+#         super().__init__()
+#         self._queue = Queue()
+#         self._thread = QThread()
+#         self.moveToThread(self._thread)
+#         self._thread.started.connect(self._process_queue)
+#         self._running = True
 
-    def on_click(self) -> None:
-        self.event_bus.emit('widget_update', "status_label_main", {'text': 'Button clicked!'})
+#     def start(self):
+#         self._thread.start()
 
+#     def stop(self):
+#         self._running = False
+#         self._thread.quit()
+#         self._thread.wait()
 
-class MyScreen3(ScreenBase):
-    def __init__(self, event_bus: EventBus):
-        super().__init__(event_bus)
-        label = QLabel("Waiting...")
-        self.add_widget("status_label_main", label)
-        event_bus.widget_update.connect(self.update_label)
+#     def emit(self, event_type: str, *args: Union[str, dict]):
+#         self._queue.put((event_type, args))
 
-    def update_label(self, widget_name: str, data: dict) -> None:
-        if widget_name in self.widgets:
-            self.widgets[widget_name].setText(data.get('text', ''))
-
-
-def main():
-    app = QApplication(sys.argv)
-    event_bus = EventBus()
-    event_bus.start()
-
-    screen1 = MyScreen1(event_bus)
-    screen3 = MyScreen3(event_bus)
-
-    screen1.show()
-    screen3.show()
-
-    app.aboutToQuit.connect(event_bus.stop)
-    sys.exit(app.exec())
+#     def _process_queue(self):
+#         while self._running:
+#             event_type, args = self._queue.get()
+#             getattr(self, event_type).emit(*args)
+#             self._queue.task_done()
 
 
-if __name__ == "__main__":
-    main()
+# class ScreenBase(QWidget):
+#     def __init__(self, event_bus: EventBus):
+#         super().__init__()
+#         self.event_bus = event_bus
+#         self.widgets: Dict[str, Union[QPushButton, QLabel]] = {}  # Refined type hint here for clarity
+#         layout = QVBoxLayout()
+#         self.setLayout(layout)
+
+#     def add_widget(self, name: str, widget: QWidget) -> None:
+#         widget.setObjectName(name)
+#         self.widgets[name] = widget
+#         self.layout().addWidget(widget)
+
+
+# class MyScreen1(ScreenBase):
+#     def __init__(self, event_bus: EventBus):
+#         super().__init__(event_bus)
+#         button = QPushButton("Click Me")
+#         self.add_widget("button_click_me", button)
+#         button.clicked.connect(self.on_click)
+
+#     def on_click(self) -> None:
+#         self.event_bus.emit('widget_update', "status_label_main", {'text': 'Button clicked!'})
+
+
+# class MyScreen3(ScreenBase):
+#     def __init__(self, event_bus: EventBus):
+#         super().__init__(event_bus)
+#         label = QLabel("Waiting...")
+#         self.add_widget("status_label_main", label)
+#         event_bus.widget_update.connect(self.update_label)
+
+#     def update_label(self, widget_name: str, data: dict) -> None:
+#         if widget_name in self.widgets:
+#             self.widgets[widget_name].setText(data.get('text', ''))
+
+
+# def main():
+#     app = QApplication(sys.argv)
+#     event_bus = EventBus()
+#     event_bus.start()
+
+#     screen1 = MyScreen1(event_bus)
+#     screen3 = MyScreen3(event_bus)
+
+#     screen1.show()
+#     screen3.show()
+
+#     app.aboutToQuit.connect(event_bus.stop)
+#     sys.exit(app.exec())
+
+
+# if __name__ == "__main__":
+#     main()
+
+
+from PyQt6.QtCore import QObject, pyqtSignal
+
+class MyEmitter(QObject):
+    my_signal = pyqtSignal(str, int)
+    another_signal = pyqtSignal()
+
+    def do_something(self):
+        self.my_signal.emit("Action performed", 100)
+        self.another_signal.emit()
+
+def my_slot(text, number):
+    print(f"Slot received: {text}, {number}")
+
+def another_slot():
+    print("Another slot was triggered")
+
+if __name__ == '__main__':
+    emitter = MyEmitter()
+    emitter.my_signal.connect(my_slot)
+    emitter.another_signal.connect(another_slot)
+    emitter.do_something()
