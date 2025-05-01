@@ -35,18 +35,23 @@ def my_first_page():
     window.window_layout_manager.add_widgets_to_window(
             middleSplit.add_widgets_to_spliter(
                 
-                calendar_widget,
+                # calendar_widget,
+                eWebPage,
+                
                 
                 topTab.add_groups_as_tabs(
-                    
-                    exploreTab0.add_widgets_to_group(
-                        list_widget,
-                    ),
-                    
                     playerControls.add_widgets_to_group(
+                        start_ewebpage,
+                        embed_ewebpage,
                         button,
                         reset_button, 
                     ),
+                    
+                    exploreTab0.add_widgets_to_group(
+                        list_widget,
+                        
+                    ),
+                    
                 ),
                 
                 bottomTab.add_groups_as_tabs(

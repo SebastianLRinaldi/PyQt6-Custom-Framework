@@ -1,8 +1,8 @@
 from application.FrontEnd.B_WidgetsFolder.widgetConfiguration import *
-
+from application.FrontEnd.B_WidgetsFolder.webpageWidgetConfiguration import *
 # Button
-button = Button(text="A Build Button")
-reset_button = Button(text="A Build Button")
+button = Button(text="Start")
+reset_button = Button(text="Reset")
 
 # Label
 label = Label(text="Enter your name:")
@@ -23,3 +23,7 @@ list_widget = ListWidget()
 
 # TextEdit
 text_edit = TextEdit(text="This is a multi-line text editor")
+
+eWebPage = EmbeddedWebPage()
+start_ewebpage = Button(text="Start WebPage")
+embed_ewebpage = Button(text="Embed WebPage")
