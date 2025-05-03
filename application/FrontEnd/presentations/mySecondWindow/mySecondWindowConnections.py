@@ -5,8 +5,8 @@ from application.FrontEnd.E_combiner.eventBus import *
 
 
 # button.clicked.connect(event_bus.eventTriggered.emit)
-event_bus.update_widget.connect(update_label)
-event_bus.reset_widget.connect(reset_label)
+event_bus.widget_update_requested.connect(update_label)
+event_bus.widget_reset_requested.connect(reset_label)
 
 # reset_button.clicked.connect(reset_label)
 

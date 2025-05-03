@@ -41,10 +41,10 @@ def my_first_page():
                 
                 topTab.add_groups_as_tabs(
                     playerControls.add_widgets_to_group(
-                        start_ewebpage,
-                        embed_ewebpage,
-                        button,
-                        reset_button, 
+                        start_page_btn,
+                        debug_page_btn,
+                        update_widget_btn,
+                        reset_widget_btn, 
                     ),
                     
                     exploreTab0.add_widgets_to_group(

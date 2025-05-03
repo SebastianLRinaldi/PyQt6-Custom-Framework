@@ -3,20 +3,20 @@ import webview
 class WebViewWindowActions:
     @staticmethod
     def on_closed():
-        # queue.put("kill_spotify_application")
         print('pywebview window is closed')
+        
     @staticmethod
     def on_loaded():
         print('pywebview Dom is loaded!')
-        # queue.put("spotify_application_DOM_loaded")
+
     @staticmethod
     def on_shown():
         print('pywebview window is shown!')
-        # queue.put("spotify_application_webview_on")
-        # self.play_btn_spotify_ui_click()
+
     @staticmethod
     def on_restored():
         print('pywebview window is restored!')
+        
     @staticmethod
     def on_moved(window, x, y):
         print(f"X:{x}, Y:{y}, width:{window.width}, height:{window.height}")
@@ -73,18 +73,18 @@ class WebviewDOM:
 class WebviewWindow:
     def __init__(self):
         pass
+    
 
     def blank_logic(self, window):
         print(f"Start: {window}")
         
     def change_url(self, url):
         webview.windows[0].load_url(url)
-        
     def start_webview(self, backend_logic, window, menuitems=[]):
         webview.start(backend_logic, window, menu=menuitems, user_agent="MMozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)", private_mode=False, debug=False)
         
     def set_and_start_window(self, backend_logic, url):
-        self.window = webview.create_window('My Webview', url, x=508, y=840-135, width=724, height=135, background_color='#00FFFF', transparent=False, minimized=True,  shadow=False, on_top=False, frameless=True, easy_drag=True)
+        window = webview.create_window('My Webview', url, x=508, y=840-135, width=724, height=135, background_color='#00FFFF', transparent=False, minimized=True,  shadow=False, on_top=False, frameless=True, easy_drag=True)
         webview.windows[0].events.closed += WebViewWindowActions.on_closed
         webview.windows[0].events.loaded += WebViewWindowActions.on_loaded # When DOM is loaded
         webview.windows[0].events.shown += WebViewWindowActions.on_shown # When webview window is loaded
@@ -93,4 +93,4 @@ class WebviewWindow:
 
         # Start the webview on the main thread and run back_endlogic in another thread
         # his will launch a separate thread and is identical to starting a thread by hand.
-        self.start_webview(backend_logic, self.window)
+        self.start_webview(backend_logic, window)

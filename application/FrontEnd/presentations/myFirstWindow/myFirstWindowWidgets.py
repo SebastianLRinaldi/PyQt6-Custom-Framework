@@ -1,8 +1,8 @@
 from application.FrontEnd.B_WidgetsFolder.widgetConfiguration import *
 from application.FrontEnd.B_WidgetsFolder.webpageWidgetConfiguration import *
 # Button
-button = Button(text="Start")
-reset_button = Button(text="Reset")
+update_widget_btn = Button(text="Start")
+reset_widget_btn = Button(text="Reset")
 
 # Label
 label = Label(text="Enter your name:")
@@ -24,6 +24,7 @@ list_widget = ListWidget()
 # TextEdit
 text_edit = TextEdit(text="This is a multi-line text editor")
 
-eWebPage = EmbeddedWebPage()
-start_ewebpage = Button(text="Start WebPage")
-embed_ewebpage = Button(text="Embed WebPage")
+# eWebPage = EmbeddedWebPage()
+eWebPage = WebPage()
+start_page_btn = Button(text="Start WebPage")
+debug_page_btn = Button(text="Webview Debug Data")
