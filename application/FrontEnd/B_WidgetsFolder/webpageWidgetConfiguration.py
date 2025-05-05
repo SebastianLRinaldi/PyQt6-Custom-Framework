@@ -23,16 +23,54 @@ from PyQt6.QtCore import *
 from PyQt6.QtWidgets import * 
 from PyQt6.QtGui import *
 
-from PyQt6.QtNetwork import QNetworkAccessManager, QNetworkRequest, QNetworkReply
 from PyQt6.QtWebEngineWidgets import *
+from PyQt6.QtWebEngineCore import *
 from application.FrontEnd.A_frameworks.widgetFrameworks import ConnectedWidget, IsolatedWidget
+
+
+
+from PyQt6.QtWebEngineCore import QWebEngineUrlRequestInterceptor
+
+class AdBlockInterceptor(QWebEngineUrlRequestInterceptor):
+    def interceptRequest(self, info):
+        url = info.requestUrl().toString()
+        if self.should_block(url):
+            info.block(True)
+
+    def should_block(self, url: str) -> bool:
+        block_keywords = [
+            "ads", "adservice", "doubleclick", "googlesyndication",
+            "tracking", "pixel", "analytics", "clicktracker",
+            "facebook.net", "beacon", "sponsor", "promo"
+        ]
+        return any(word in url for word in block_keywords)
+
+
+
+
+
+# profile = QWebEngineProfile("AdFree", parent)
+# profile.setHttpCacheType(QWebEngineProfile.HttpCacheType.NoCache)
+# profile.setPersistentCookiesPolicy(QWebEngineProfile.PersistentCookiesPolicy.NoPersistentCookies)
+# profile.setSpellCheckEnabled(False)
+# profile.setHttpUserAgent("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120 Safari/537.36")  # Spoof UA
+# profile.setUrlRequestInterceptor(AdBlockInterceptor())
+
 
 
 class WebPage(QWebEngineView, IsolatedWidget):
     def __init__(self, url="https://example.com", widgetRow=-1, widgetCol=-1, widgetRowSpan=-1, widgetColSpan=-1, *args, **kwargs):
         IsolatedWidget.__init__(self, widgetRow, widgetCol, widgetRowSpan, widgetColSpan, *args, **kwargs)
         QWebEngineView.__init__(self, *args, **kwargs)
+        
+        # self.settings().setAttribute(QWebEngineSettings.WebAttribute.WebGLEnabled, True) # Might be needed in some cases
+
         self.setUrl(QUrl(url))
+        self.setStyleSheet("background-color: lightgreen;")
+        print(self.setUrl(QUrl("chrome://gpu")))
+
+
+
 
 # class EmbeddedWebPage(IsolatedWidget):
 #     def __init__(self, widgetRow=-1, widgetCol=-1, widgetRowSpan=-1, widgetColSpan=-1, parent=None, *args, **kwargs):

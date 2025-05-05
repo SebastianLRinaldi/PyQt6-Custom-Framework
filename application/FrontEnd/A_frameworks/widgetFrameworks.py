@@ -10,6 +10,7 @@ class Widget(QWidget):
         super().__init__()
         if layout:
             self.setLayout(layout)
+        self.setStyleSheet("background-color: grey;")
         
         
 class ConnectedWidget(QWidget):
@@ -46,6 +47,7 @@ class IsolatedWidget(QWidget):
         self.widgetCol = widgetCol
         self.widgetRowSpan = widgetRowSpan 
         self.widgetColSpan = widgetColSpan 
+        self.setStyleSheet("background-color: lightblue;")
 
 
 

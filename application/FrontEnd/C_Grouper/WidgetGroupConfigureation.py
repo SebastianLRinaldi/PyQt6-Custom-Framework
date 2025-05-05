@@ -13,7 +13,9 @@ class PlayerControls(WidgetGroup):
         
         
 
-playerControls = PlayerControls(title="PlayerControls")
+playerControls = PlayerControls(title="Player Controls")
+searchControls = WidgetGroup(title="Search Controls")
+
 exploreTab0 = WidgetGroup(title="search0")
 exploreTab1 = WidgetGroup(title="search1")
 exploreTab2 = WidgetGroup(title="search2")
