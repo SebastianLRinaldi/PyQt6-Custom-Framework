@@ -20,8 +20,8 @@ from application.FrontEnd.C_Grouper.SpliterGroupConfiguration import *
 from application.FrontEnd.C_Grouper.TabGroupConfigureation import *
 from application.FrontEnd.C_Grouper.WidgetGroupConfigureation import *
 
-from application.FrontEnd.presentations.mySecondWindow.mySecondWindowWidgets import *
-from application.FrontEnd.presentations.mySecondWindow.mySecondWindowConnections import *
+from application.apps.mySecondWindow.mySecondWindowWidgets import *
+from application.apps.mySecondWindow.mySecondWindowConnections import *
 
 from application.FrontEnd.D_WindowFolder.windowConfigureation import *
 from application.FrontEnd.E_combiner.eventBus import *

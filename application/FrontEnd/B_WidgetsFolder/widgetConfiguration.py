@@ -17,33 +17,33 @@ from PyQt6.QtGui import *
 
 from PyQt6.QtNetwork import QNetworkAccessManager, QNetworkRequest, QNetworkReply
 
-from application.FrontEnd.A_frameworks.widgetFrameworks import ConnectedWidget, IsolatedWidget
+# from application.FrontEnd.A_frameworks.widgetFrameworks import ConnectedWidget, IsolatedWidget
 
 
 
 
 
-class Button(QPushButton, IsolatedWidget):
+class Button(QPushButton):
     def __init__(self, text="Click me!", widgetRow=-1, widgetCol=-1, widgetRowSpan=-1, widgetColSpan=-1, *args, **kwargs):
-        IsolatedWidget.__init__(self, widgetRow, widgetCol, widgetRowSpan, widgetColSpan, *args, **kwargs)
+        # IsolatedWidget.__init__(self, widgetRow, widgetCol, widgetRowSpan, widgetColSpan, *args, **kwargs)
         QPushButton.__init__(self, text, *args, **kwargs)
 
     def update_label(self, text):
         self.setText(text)
 
 
-class LineEdit(QLineEdit, IsolatedWidget):
+class LineEdit(QLineEdit):
     def __init__(self, text="", widgetRow=-1, widgetCol=-1, widgetRowSpan=-1, widgetColSpan=-1, *args, **kwargs):
-        IsolatedWidget.__init__(self, widgetRow, widgetCol, widgetRowSpan, widgetColSpan, *args, **kwargs)
+        # IsolatedWidget.__init__(self, widgetRow, widgetCol, widgetRowSpan, widgetColSpan, *args, **kwargs)
         QLineEdit.__init__(self, text, *args, **kwargs)
 
     def update_label(self, text):
         self.setText(text)
 
 
-class ComboBox(QComboBox, IsolatedWidget):
+class ComboBox(QComboBox):
     def __init__(self, widgetRow=-1, widgetCol=-1, widgetRowSpan=-1, widgetColSpan=-1, *args, **kwargs):
-        IsolatedWidget.__init__(self, widgetRow, widgetCol, widgetRowSpan, widgetColSpan, *args, **kwargs)
+        # IsolatedWidget.__init__(self, widgetRow, widgetCol, widgetRowSpan, widgetColSpan, *args, **kwargs)
         QComboBox.__init__(self, *args, **kwargs)
 
     def update_items(self, items):
@@ -51,72 +51,72 @@ class ComboBox(QComboBox, IsolatedWidget):
         self.addItems(items)
 
 
-class CheckBox(QCheckBox, IsolatedWidget):
+class CheckBox(QCheckBox):
     def __init__(self, text="Check me!", widgetRow=-1, widgetCol=-1, widgetRowSpan=-1, widgetColSpan=-1, *args, **kwargs):
-        IsolatedWidget.__init__(self, widgetRow, widgetCol, widgetRowSpan, widgetColSpan, *args, **kwargs)
+        # IsolatedWidget.__init__(self, widgetRow, widgetCol, widgetRowSpan, widgetColSpan, *args, **kwargs)
         QCheckBox.__init__(self, text, *args, **kwargs)
 
     def update_label(self, text):
         self.setText(text)
 
 
-class RadioButton(QRadioButton, IsolatedWidget):
+class RadioButton(QRadioButton):
     def __init__(self, text="Select me!", widgetRow=-1, widgetCol=-1, widgetRowSpan=-1, widgetColSpan=-1, *args, **kwargs):
-        IsolatedWidget.__init__(self, widgetRow, widgetCol, widgetRowSpan, widgetColSpan, *args, **kwargs)
+        # IsolatedWidget.__init__(self, widgetRow, widgetCol, widgetRowSpan, widgetColSpan, *args, **kwargs)
         QRadioButton.__init__(self, text, *args, **kwargs)
 
     def update_label(self, text):
         self.setText(text)
 
 
-class Slider(QSlider, IsolatedWidget):
+class Slider(QSlider):
     def __init__(self, orientation=Qt.Orientation.Horizontal, widgetRow=-1, widgetCol=-1, widgetRowSpan=-1, widgetColSpan=-1, *args, **kwargs):
-        IsolatedWidget.__init__(self, widgetRow, widgetCol, widgetRowSpan, widgetColSpan, *args, **kwargs)
+        # IsolatedWidget.__init__(self, widgetRow, widgetCol, widgetRowSpan, widgetColSpan, *args, **kwargs)
         QSlider.__init__(self, orientation, *args, **kwargs)
 
     def update_value(self, value):
         self.setValue(value)
 
 
-class SpinBox(QSpinBox, IsolatedWidget):
+class SpinBox(QSpinBox):
     def __init__(self, widgetRow=-1, widgetCol=-1, widgetRowSpan=-1, widgetColSpan=-1, *args, **kwargs):
-        IsolatedWidget.__init__(self, widgetRow, widgetCol, widgetRowSpan, widgetColSpan, *args, **kwargs)
+        # IsolatedWidget.__init__(self, widgetRow, widgetCol, widgetRowSpan, widgetColSpan, *args, **kwargs)
         QSpinBox.__init__(self, *args, **kwargs)
 
     def update_value(self, value):
         self.setValue(value)
 
 
-class TextEdit(QTextEdit, IsolatedWidget):
+class TextEdit(QTextEdit):
     def __init__(self, text="", widgetRow=-1, widgetCol=-1, widgetRowSpan=-1, widgetColSpan=-1, *args, **kwargs):
-        IsolatedWidget.__init__(self, widgetRow, widgetCol, widgetRowSpan, widgetColSpan, *args, **kwargs)
+        # IsolatedWidget.__init__(self, widgetRow, widgetCol, widgetRowSpan, widgetColSpan, *args, **kwargs)
         QTextEdit.__init__(self, text, *args, **kwargs)
 
     def update_text(self, text):
         self.setText(text)
 
 
-class TableWidget(QTableWidget, IsolatedWidget):
+class TableWidget(QTableWidget):
     def __init__(self, rows=5, cols=5, widgetRow=-1, widgetCol=-1, widgetRowSpan=-1, widgetColSpan=-1, *args, **kwargs):
-        IsolatedWidget.__init__(self, widgetRow, widgetCol, widgetRowSpan, widgetColSpan, *args, **kwargs)
+        # IsolatedWidget.__init__(self, widgetRow, widgetCol, widgetRowSpan, widgetColSpan, *args, **kwargs)
         QTableWidget.__init__(self, rows, cols, *args, **kwargs)
 
     def update_cell(self, row, col, value):
         self.setItem(row, col, QTableWidgetItem(value))
 
 
-class TableWidgetItem(QTableWidgetItem, IsolatedWidget):
+class TableWidgetItem(QTableWidgetItem):
     def __init__(self, text="", widgetRow=-1, widgetCol=-1, widgetRowSpan=-1, widgetColSpan=-1, *args, **kwargs):
-        IsolatedWidget.__init__(self, widgetRow, widgetCol, widgetRowSpan, widgetColSpan, *args, **kwargs)
+        # IsolatedWidget.__init__(self, widgetRow, widgetCol, widgetRowSpan, widgetColSpan, *args, **kwargs)
         QTableWidgetItem.__init__(self, text, *args, **kwargs)
 
     def update_text(self, text):
         self.setText(text)
 
 
-class ProgressBar(QProgressBar, IsolatedWidget):
+class ProgressBar(QProgressBar):
     def __init__(self, widgetRow=-1, widgetCol=-1, widgetRowSpan=-1, widgetColSpan=-1, *args, **kwargs):
-        IsolatedWidget.__init__(self, widgetRow, widgetCol, widgetRowSpan, widgetColSpan, *args, **kwargs)
+        # IsolatedWidget.__init__(self, widgetRow, widgetCol, widgetRowSpan, widgetColSpan, *args, **kwargs)
         QProgressBar.__init__(self, *args, **kwargs)
 
     def update_progress(self, value):
@@ -158,9 +158,9 @@ class ProgressBar(QProgressBar, IsolatedWidget):
 #     def update_value(self, value):
 #         self.setValue(value)
 
-class ListWidget(QListWidget, IsolatedWidget):
+class ListWidget(QListWidget):
     def __init__(self, widgetRow=-1, widgetCol=-1, widgetRowSpan=-1, widgetColSpan=-1, *args, **kwargs):
-        IsolatedWidget.__init__(self, widgetRow, widgetCol, widgetRowSpan, widgetColSpan, *args, **kwargs)
+        # IsolatedWidget.__init__(self, widgetRow, widgetCol, widgetRowSpan, widgetColSpan, *args, **kwargs)
         QListWidget.__init__(self, *args, **kwargs)
 
     def update_items(self, items):
@@ -168,18 +168,18 @@ class ListWidget(QListWidget, IsolatedWidget):
         self.addItems(items)
 
 
-class Label(QLabel, IsolatedWidget):
+class Label(QLabel):
     def __init__(self, text="", widgetRow=-1, widgetCol=-1, widgetRowSpan=-1, widgetColSpan=-1, *args, **kwargs):
-        IsolatedWidget.__init__(self, widgetRow, widgetCol, widgetRowSpan, widgetColSpan, *args, **kwargs)
+        # IsolatedWidget.__init__(self, widgetRow, widgetCol, widgetRowSpan, widgetColSpan, *args, **kwargs)
         QLabel.__init__(self, text, *args, **kwargs)
 
     def update_label(self, text):
         self.setText(text)
 
 
-class CalendarWidget(QCalendarWidget, IsolatedWidget):
+class CalendarWidget(QCalendarWidget):
     def __init__(self, widgetRow=-1, widgetCol=-1, widgetRowSpan=-1, widgetColSpan=-1, *args, **kwargs):
-        IsolatedWidget.__init__(self, widgetRow, widgetCol, widgetRowSpan, widgetColSpan, *args, **kwargs)
+        # IsolatedWidget.__init__(self, widgetRow, widgetCol, widgetRowSpan, widgetColSpan, *args, **kwargs)
         QCalendarWidget.__init__(self, *args, **kwargs)
 
     def update_selected_date(self, date):

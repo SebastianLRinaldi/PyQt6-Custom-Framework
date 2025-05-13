@@ -29,13 +29,6 @@ class TabHolder(QTabWidget):
         self.setTabShape(QTabWidget.TabShape.Triangular)
         self.setMovable(True)
         
-    def set_main_window(self, window: QMainWindow) -> None:
-        """Set the main window parent."""
-        self._parent = window
-    
-    @property
-    def parent_window(self) -> Optional[QMainWindow]:
-        return self._parent
     
     def add_groups_as_tabs(self, *pages: WidgetGroup):
         """Add tabs to the master tab widget for the group of widgets as pages"""
@@ -45,8 +38,7 @@ class TabHolder(QTabWidget):
             else:
                 self.addTab(page, "EMPTY")
         return self
-   
 
-topTab = TabHolder(title="Inputs")
-bottomTab = TabHolder(title="btns")
+# topTab = TabHolder(title="Inputs")
+# bottomTab = TabHolder(title="btns")
 

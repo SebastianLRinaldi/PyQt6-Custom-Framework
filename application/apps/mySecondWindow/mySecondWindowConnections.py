@@ -1,6 +1,6 @@
-from application.FrontEnd.presentations.mySecondWindow.mySecondWindowWidgets import *
-from application.FrontEnd.presentations.mySecondWindow.mySecondWindowFunctions import*
-from application.FrontEnd.presentations.mySecondWindow.mySecondWindowLayout import *
+from application.FrontEnd.apps.mySecondWindow.mySecondWindowWidgets import *
+from application.FrontEnd.apps.mySecondWindow.mySecondWindowFunctions import*
+from application.FrontEnd.apps.mySecondWindow.mySecondWindowLayout import *
 from application.FrontEnd.E_combiner.eventBus import *
 
 

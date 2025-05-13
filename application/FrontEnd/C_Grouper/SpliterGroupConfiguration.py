@@ -3,7 +3,7 @@ from PyQt6.QtWidgets import *
 from PyQt6.QtGui import *
 
 from PyQt6.QtNetwork import QNetworkAccessManager, QNetworkRequest, QNetworkReply
-from application.FrontEnd.A_frameworks.gridLayoutFrameworks import GridLayout
+# from application.FrontEnd.A_frameworks.gridLayoutFrameworks import AutoLayout
 
 class MasterSpliterGroup(QSplitter):
     def __init__(self, orientation=Qt.Orientation.Horizontal,         
@@ -41,10 +41,3 @@ class MasterSpliterGroup(QSplitter):
         for wiget in widgets:
             self.addWidget(wiget)
         return self
-            
-
-
-
-
-
-middleSplit = MasterSpliterGroup(orientation=Qt.Orientation.Vertical)

@@ -1,4 +1,4 @@
-from application.FrontEnd.presentations.mySecondWindow.mySecondWindowWidgets import *
+from application.FrontEnd.apps.mySecondWindow.mySecondWindowWidgets import *
 
 def on_click() -> None:
     pass

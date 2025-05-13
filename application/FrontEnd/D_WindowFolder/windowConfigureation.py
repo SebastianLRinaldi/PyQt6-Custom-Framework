@@ -1,5 +1,6 @@
-from application.FrontEnd.A_frameworks.gridLayoutFrameworks import *
-from application.FrontEnd.A_frameworks.widgetFrameworks import *
+from PyQt6.QtCore import *
+from PyQt6.QtWidgets import * 
+from PyQt6.QtGui import *
 from application.FrontEnd.E_combiner.eventBus import EventBus
 
 from typing import Dict, TypeVar, Union
@@ -13,17 +14,26 @@ class WindowWidgetEventBusManager():
         widget.setObjectName(name)
         self.widgets[name] = widget
 
-class WindowLayoutManager(QMainWindow):
+class AppLayoutManager(QWidget):
     def __init__(self):
         super().__init__()
         self.setWindowTitle("My Progressive FlashCards")
         self.resize(1000, 600)
         self.setup_stylesheets()
 
-    def add_widgets_to_window(self, *widgets):
-        grid_layout = GridLayout(*widgets, window=self.window)
-        central_widget = Widget(grid_layout)
-        self.setCentralWidget(central_widget)
+    def add_widgets_to_window(self, *widgets, setlayout:str=None):
+        if setlayout == "QVBox" or setlayout == None:
+            layout = QVBoxLayout()
+            for index, widget in enumerate(widgets):
+                layout.addWidget(widget)
+            self.setLayout(layout)
+
+        elif setlayout == "QHBox":
+            layout = QHBoxLayout()
+            for index, widget in enumerate(widgets):
+                layout.addWidget(widget)
+            self.setLayout(layout)
+            
         return self
 
     def show_window(self):
@@ -44,6 +54,6 @@ class Window:
         # Manager handling widgets and event bus
         self.window_event_bus = WindowWidgetEventBusManager(event_bus)
         # Layout manager for window layout setup
-        self.window_layout_manager = WindowLayoutManager()
+        self.window_layout_manager = AppLayoutManager()
         
         

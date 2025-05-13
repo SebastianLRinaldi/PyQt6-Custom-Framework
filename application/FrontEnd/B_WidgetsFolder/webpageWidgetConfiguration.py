@@ -25,7 +25,7 @@ from PyQt6.QtGui import *
 
 from PyQt6.QtWebEngineWidgets import *
 from PyQt6.QtWebEngineCore import *
-from application.FrontEnd.A_frameworks.widgetFrameworks import ConnectedWidget, IsolatedWidget
+# from application.FrontEnd.A_frameworks.widgetFrameworks import ConnectedWidget, IsolatedWidget
 
 
 
@@ -58,9 +58,9 @@ class AdBlockInterceptor(QWebEngineUrlRequestInterceptor):
 
 
 
-class WebPage(QWebEngineView, IsolatedWidget):
+class WebPage(QWebEngineView):
     def __init__(self, url="https://example.com", widgetRow=-1, widgetCol=-1, widgetRowSpan=-1, widgetColSpan=-1, *args, **kwargs):
-        IsolatedWidget.__init__(self, widgetRow, widgetCol, widgetRowSpan, widgetColSpan, *args, **kwargs)
+        # IsolatedWidget.__init__(self, widgetRow, widgetCol, widgetRowSpan, widgetColSpan, *args, **kwargs)
         QWebEngineView.__init__(self, *args, **kwargs)
         
         # self.settings().setAttribute(QWebEngineSettings.WebAttribute.WebGLEnabled, True) # Might be needed in some cases
