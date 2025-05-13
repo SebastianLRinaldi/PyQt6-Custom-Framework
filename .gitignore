@@ -169,3 +169,9 @@ cython_debug/
 
 # PyPI configuration file
 .pypirc
+browser_data/storage/Favicons
+browser_data/storage/Favicons-journal
+browser_data/storage/History
+browser_data/storage/History-journal
+browser_data/storage/user_prefs.json
+video.html

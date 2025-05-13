@@ -8,15 +8,16 @@ from PyQt6.QtWidgets import QTabWidget, QWidget, QGridLayout, QMainWindow
 from typing import List, Optional
 
 
-from application.FrontEnd.C_Grouper.WidgetGroupConfigureations.WidgetGroupConfigureation import WidgetGroup
+from application.FrontEnd.C_Grouper.WidgetGroupConfigureation import WidgetGroup
 
-class MasterTabHolder(QTabWidget):
+class TabHolder(QTabWidget):
     def __init__(
         self,
         widgetRow: int = -1,
         widgetCol: int = -1,
         widgetRowSpan: int = -1,
-        widgetColSpan: int = -1
+        widgetColSpan: int = -1,
+        title: str = "",
     ):
         super().__init__()
         self._parent = None
@@ -24,6 +25,7 @@ class MasterTabHolder(QTabWidget):
         self.widgetCol = widgetCol
         self.widgetRowSpan = widgetRowSpan
         self.widgetColSpan = widgetColSpan
+        self.title = title
         self.setTabShape(QTabWidget.TabShape.Triangular)
         self.setMovable(True)
         
@@ -38,9 +40,13 @@ class MasterTabHolder(QTabWidget):
     def add_groups_as_tabs(self, *pages: WidgetGroup):
         """Add tabs to the master tab widget for the group of widgets as pages"""
         for page in pages:
-            self.addTab(page, page.title)
+            if page.title:
+                self.addTab(page, page.title)
+            else:
+                self.addTab(page, "EMPTY")
         return self
    
 
-
+topTab = TabHolder(title="Inputs")
+bottomTab = TabHolder(title="btns")
 

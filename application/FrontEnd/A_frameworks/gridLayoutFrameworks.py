@@ -24,7 +24,7 @@ class GridLayout(QGridLayout):
     def __init__(self, *widgets, window: QMainWindow = None):
         super().__init__()  # No arguments here
         for index, widget in enumerate(widgets):
-            print(f"{index}: {widget}")
+            # print(f"{index}: {widget}")
             # try:
             #     widget.set_MainWindow(window)
             # except Exception as e:
