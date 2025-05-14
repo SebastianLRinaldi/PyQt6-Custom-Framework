@@ -1,21 +1,10 @@
-from application.FrontEnd.apps.mySecondWindow.mySecondWindowWidgets import *
-from application.FrontEnd.apps.mySecondWindow.mySecondWindowFunctions import*
-from application.FrontEnd.apps.mySecondWindow.mySecondWindowLayout import *
-from application.FrontEnd.E_combiner.eventBus import *
+from application.apps.mySecondWindow.mySecondWindowFunctions import*
 
+class SecondPageConnections:
+    def __init__(self, ui: My_Second_Page, logic: SecondPageLogic):
+        self.ui = ui
+        self.logic = logic
+        #     self.connect_signals()
 
-# button.clicked.connect(event_bus.eventTriggered.emit)
-event_bus.widget_update_requested.connect(update_label)
-event_bus.widget_reset_requested.connect(reset_label)
-
-# reset_button.clicked.connect(reset_label)
-
-
-
-
-
-
-
-
-
-
+        # def connect_signals(self):
+        #     self.ui.update_widget_btn.clicked.connect(self.logic.some_method)

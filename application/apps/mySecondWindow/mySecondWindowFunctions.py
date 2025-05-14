@@ -1,12 +1,19 @@
-from application.FrontEnd.apps.mySecondWindow.mySecondWindowWidgets import *
+from PyQt6.QtCore import *
+from PyQt6.QtWidgets import * 
+from PyQt6.QtGui import *
 
-def on_click() -> None:
-    pass
-    
-def update_label() -> None:
-    label2.setText("Im on 2, I have been updated by 1!")
-    
-def reset_label() -> None:
-    label2.setText("Im on 2, I have been reset by 1!")
-    
+
+from application.apps.mySecondWindow.mySecondWindowLayout import My_Second_Page
+
+
+class SecondPageLogic:
+    def __init__(self, ui: My_Second_Page):
+        self.ui = ui
+
+    def update_widget(self) -> None:
+        self.ui.name_label.setText("Set Some Random Text")
+
+    def reset_widget(self) -> None:
+        self.ui.name_label.setText("Reset to default")
+
     

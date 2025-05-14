@@ -10,68 +10,67 @@ from queue import Queue
 from typing import List
 from datetime import timedelta
 
-
 from PyQt6.QtCore import *
 from PyQt6.QtWidgets import * 
 from PyQt6.QtGui import *
+from PyQt6.QtWebEngineWidgets import *
+from PyQt6.QtWebEngineCore import *
 
-
-# from application.FrontEnd.C_Grouper.SpliterGroupConfiguration import *
-# from application.FrontEnd.C_Grouper.TabGroupConfigureation import *
-# from application.FrontEnd.C_Grouper.WidgetGroupConfigureation import *
-
-# from application.FrontEnd.presentations.myFirstWindow.myFirstWindowWidgets import *
-# from application.FrontEnd.presentations.myFirstWindow.myFirstWindowConnections import *
+from application.FrontEnd.C_Grouper.SpliterGroupConfiguration import *
+from application.FrontEnd.C_Grouper.TabGroupConfigureation import *
+from application.FrontEnd.C_Grouper.widgetGroupFrameworks import *
 
 from application.FrontEnd.D_WindowFolder.windowConfigureation import *
-# from application.FrontEnd.E_combiner.eventBus import *
-
 
 class My_Third_Page(AppLayoutManager):
     def __init__(self):
         super().__init__()
 
-        self.update_widget_btn = QPushButton(text="Start")
-        reset_widget_btn = QPushButton(text="Reset")
+        self.eWebPage = QWebEngineView()
+        self.eWebPage.setUrl(QUrl("chrome://gpu"))
+        self.start_page_btn = QPushButton(text="Start WebPage")
+        self.disable_element_btn = QPushButton(text="Disable Element")
+        self.inject_css_btn = QPushButton(text="Inject Blue")
+        self.highlight_elm_btn = QPushButton(text="Highlight Element")
+        self.design_mode_btn = QPushButton(text="Activate Design Mode")
+        self.devtools_btn =  QPushButton(text="Activate Dev Tools")
 
-        self.label = QLabel(text="Enter your name:")
-        check_box = QCheckBox(text="Accept terms and conditions")
-        radio_button = QRadioButton(text="Select this option")
-        calendar_widget = QCalendarWidget()
-        list_widget = QListWidget()
-        text_edit = QTextEdit("This is a multi-line text editor")
-
-        # eWebPage = WebPage()
-        start_page_btn = QPushButton(text="Start WebPage")
-        debug_page_btn = QPushButton(text="Show WebPage Debug Data")
-        inject_css_btn = QPushButton(text="Inject Blue")
-        highlight_elm_btn = QPushButton(text="Highlight Element")
-        design_mode_btn = QPushButton(text="Activate Design Mode")
-        devtools_btn =  QPushButton(text="Activate Dev Tools")
-
-
-
-
-        url_input = QLineEdit(text="URL GOES HERE")
-        change_url_btn = QPushButton(text="Change to Entered URL")
-
-
-
+        self.url_input = QLineEdit(text="URL GOES HERE")
+        self.change_url_btn = QPushButton(text="Change to Entered URL")
 
         # DevTools view
-        # devtools_view = WebPage()
-        # devtools_view.setWindowTitle("DevTools")
+        self.devtools_view = QWebEngineView()
+        self.devtools_view.setWindowTitle("DevTools")
 
-        # middleSplit = MasterSpliterGroup(orientation=Qt.Orientation.Vertical)
+        WebToolsTab = TabHolder(title="Web Tool Tabs")
 
-        
-        # window = Window(event_bus)
+        exploreGroup = WidgetGroup(title="Web Explore")
+        manipluateGroup = WidgetGroup(title="Web Editor")
+        searchGroup = WidgetGroup(title="Search Tools")
+
+        split = MasterSpliterGroup(orientation=Qt.Orientation.Vertical)
+
         self.add_widgets_to_window(
-            self.label,
-            reset_widget_btn
+            split.add_widgets_to_spliter(
 
-            # middleSplit.add_widgets_to_spliter(
-                # calendar_widget,
-                # eWebPage,
-            # )
+                self.eWebPage,
+
+                WebToolsTab.add_groups_as_tabs(
+                    exploreGroup.add_widgets_to_group(
+                        self.start_page_btn,
+                        self.design_mode_btn,
+                        self.devtools_btn,
+                    ),
+                    manipluateGroup.add_widgets_to_group(
+                        self.disable_element_btn,
+                        self.inject_css_btn,
+                        self.highlight_elm_btn,
+                    ),
+                    searchGroup.add_widgets_to_group(
+                        self.url_input,
+                        self.change_url_btn,
+                        setlayout="H"
+                    )
+                )
+            )
         )

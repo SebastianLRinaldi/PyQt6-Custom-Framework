@@ -18,61 +18,44 @@ from PyQt6.QtGui import *
 
 from application.FrontEnd.C_Grouper.SpliterGroupConfiguration import *
 from application.FrontEnd.C_Grouper.TabGroupConfigureation import *
-from application.FrontEnd.C_Grouper.WidgetGroupConfigureation import *
+from application.FrontEnd.C_Grouper.widgetGroupFrameworks import *
 
-from application.apps.mySecondWindow.mySecondWindowWidgets import *
-from application.apps.mySecondWindow.mySecondWindowConnections import *
+
 
 from application.FrontEnd.D_WindowFolder.windowConfigureation import *
-from application.FrontEnd.E_combiner.eventBus import *
 
 
-window2 = Window(event_bus)
 
 
-def my_second_page():
-    
-    window2.window_layout_manager.add_widgets_to_window(
-        label2, 
-            # middleSplit.add_widgets_to_spliter(
-                
-            #     calendar_widget,
-                
-            #     topTab.add_groups_as_tabs(
-                    
-            #         exploreTab0.add_widgets_to_group(
-            #             list_widget,
-            #         ),
-                    
-            #         playerControls.add_widgets_to_group(
-            #             button,
-            #             reset_button, 
-            #         ),
-            #     ),
-                
-            #     bottomTab.add_groups_as_tabs(
-                    
-            #             exploreTab1.add_widgets_to_group(
-            #                 text_edit, 
-            #             ),
-                        
-            #             exploreTab2.add_widgets_to_group(
-            #                 radio_button,
-            #                 label2,  
-            #             ),
-                        
-            #             exploreTab3.add_widgets_to_group(
-            #                 check_box,
-            #             )
-            #         )
-            # )
+
+
+class My_Second_Page(AppLayoutManager):
+    def __init__(self):
+        super().__init__()
+        self.list_widget = QListWidget()
+        self.name_label = QLabel(text="Enter your name:")
+        self.text_edit = QTextEdit("This is a multi-line text editor")
+        
+        self.radio_button = QRadioButton(text="Select this option")
+        self.check_box = QCheckBox(text="Accept terms and conditions")
+        
+        middleSplit = MasterSpliterGroup(orientation=Qt.Orientation.Vertical)
+        labelsGroup = WidgetGroup(title="Random Labels")
+        btnsGroup = WidgetGroup(title="Random Btns")
+        
+        self.add_widgets_to_window(
+            middleSplit.add_widgets_to_spliter(
+                labelsGroup.add_widgets_to_group(
+                    self.name_label,
+                    self.text_edit,
+                    self.list_widget,
+                ),
+
+                btnsGroup.add_widgets_to_group(
+                    self.radio_button,
+                    self.check_box,
+                )
+            )
         )
-    
-    
-    window2.window_layout_manager.show_window()
-
-
-
-
-
+                
 

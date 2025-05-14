@@ -134,6 +134,7 @@ Test this see if anything changes in terms of speed?
 
 from application.FrontEnd.E_combiner.PageController import *
 from application.apps.myFirstWindow.myFirstWindowConnections import FirstPageConnections
+from application.apps.mySecondWindow.mySecondWindowConnections import SecondPageConnections
 from application.apps.myThirdWindow.myThirdPageConnections import ThirdPageConnections
 
 class Dashboard(QMainWindow):
@@ -145,9 +146,10 @@ class Dashboard(QMainWindow):
         self.stack = QStackedWidget()
 
         # Your dynamic page creation
-         # Define pages with: name, UI class, Logic class, Controller class
+        # Define pages with: name, UI class, Logic class, Controller class
         pages = [
             ("first", My_First_Page, FirstPageLogic, FirstPageConnections),
+            ("second", My_Second_Page, SecondPageLogic, SecondPageConnections),
             ("third", My_Third_Page, ThirdPageLogic, ThirdPageConnections),
         ]
 
