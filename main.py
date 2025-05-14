@@ -56,20 +56,23 @@ class Dashboard(QMainWindow):
         # Create the controller
         self.controller = PageController(self.logic)
 
-        
-        # Nav buttons
-        nav = QHBoxLayout()
-        for name in self.apps:
-            btn = QPushButton(name.capitalize())
-            btn.clicked.connect(lambda _, n=name: self.switch_to(n))
-            nav.addWidget(btn)
 
+        menubar = QMenuBar(self)
+        app_menu = menubar.addMenu("Apps")
+
+        for name in self.apps:
+            action = QAction(name.capitalize(), self)
+            action.triggered.connect(lambda _, n=name: self.switch_to(n))
+            app_menu.addAction(action)
+
+        self.setMenuBar(menubar)
+
+        # Main container setup
         container = QWidget()
         layout = QVBoxLayout(container)
-        layout.addLayout(nav)
         layout.addWidget(self.stack)
-
         self.setCentralWidget(container)
+
         self.switch_to("first")
 
     def switch_to(self, app_name):

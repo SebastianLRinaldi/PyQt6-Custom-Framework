@@ -8,13 +8,13 @@ class WidgetGroup(QWidget):
         self.title = title
 
     def add_widgets_to_group(self, *widgets, setlayout:str=None):
-        if setlayout is "V" or setlayout is None:
+        if setlayout == "V" or setlayout == None:
             layout = QVBoxLayout()
             for index, widget in enumerate(widgets):
                 layout.addWidget(widget)
             self.setLayout(layout)
 
-        elif setlayout is "H":
+        elif setlayout == "H":
             layout = QHBoxLayout()
             for index, widget in enumerate(widgets):
                 layout.addWidget(widget)
