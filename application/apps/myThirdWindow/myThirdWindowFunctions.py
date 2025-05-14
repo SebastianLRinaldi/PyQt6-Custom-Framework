@@ -121,3 +121,4 @@ class ThirdPageLogic:
         else:
             self.ui.eWebPage.page().setDevToolsPage(self.ui.devtools_view.page())
             self.ui.devtools_view.show()
+            

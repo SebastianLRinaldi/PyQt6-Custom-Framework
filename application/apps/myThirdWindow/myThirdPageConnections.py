@@ -32,3 +32,4 @@ class ThirdPageConnections:
         self.ui.change_url_btn.clicked.connect(
             self.logic.change_url
             )
+        

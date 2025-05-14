@@ -2,12 +2,6 @@ from PyQt6.QtCore import *
 from PyQt6.QtWidgets import * 
 from PyQt6.QtGui import *
 
-from PyQt6.QtNetwork import QNetworkAccessManager, QNetworkRequest, QNetworkReply
-
-from PyQt6.QtWidgets import QTabWidget, QWidget, QGridLayout, QMainWindow
-from typing import List, Optional
-
-
 from application.FrontEnd.C_Grouper.widgetGroupFrameworks import WidgetGroup
 
 class TabHolder(QTabWidget):
@@ -38,4 +32,3 @@ class TabHolder(QTabWidget):
             else:
                 self.addTab(page, "EMPTY")
         return self
-

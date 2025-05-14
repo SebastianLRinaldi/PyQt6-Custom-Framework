@@ -2,8 +2,6 @@ from PyQt6.QtCore import *
 from PyQt6.QtWidgets import * 
 from PyQt6.QtGui import *
 
-
-
 class WidgetGroup(QWidget):
     def __init__(self, title=None):
         super().__init__()
@@ -23,5 +21,4 @@ class WidgetGroup(QWidget):
             self.setLayout(layout)
             
         return self
-
-
+    

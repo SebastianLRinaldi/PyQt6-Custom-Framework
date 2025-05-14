@@ -8,7 +8,6 @@ class LogicDict(TypedDict):
     second:SecondPageLogic
     third: ThirdPageLogic
 
-
 class PageController:
     def __init__(self, logic: LogicDict):
         self.logic = logic
@@ -20,3 +19,4 @@ class PageController:
         self.logic["first"].ui.reset_widget_btn.clicked.connect(
             lambda: self.logic["second"].ui.name_label.setText("Updated Another Way")
         )
+        

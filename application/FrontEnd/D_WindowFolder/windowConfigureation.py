@@ -1,18 +1,8 @@
 from PyQt6.QtCore import *
 from PyQt6.QtWidgets import * 
 from PyQt6.QtGui import *
-# from application.FrontEnd.E_combiner.eventBus import EventBus
 
 from typing import Dict, TypeVar, Union
-
-# class WindowWidgetEventBusManager():
-#     def __init__(self, event_bus: EventBus):
-#         self.event_bus = event_bus
-#         self.widgets: Dict[str, QWidget] = {}
-
-#     def register_widget(self, name: str, widget: QWidget) -> None:
-#         widget.setObjectName(name)
-#         self.widgets[name] = widget
 
 class AppLayoutManager(QWidget):
     def __init__(self):
@@ -48,12 +38,4 @@ class AppLayoutManager(QWidget):
                 background-color: #AAAAAA;
             }
         """)
-
-# class Window:
-#     def __init__(self, event_bus: EventBus):
-#         # Manager handling widgets and event bus
-#         self.window_event_bus = WindowWidgetEventBusManager(event_bus)
-#         # Layout manager for window layout setup
-#         self.window_layout_manager = AppLayoutManager()
-        
         
