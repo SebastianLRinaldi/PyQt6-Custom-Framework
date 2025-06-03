@@ -16,7 +16,7 @@ import os
 # Add the root directory of your project to the sys.path
 # sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../../')))
 
-from application.FrontEnd.E_combiner.PageController import *
+from application.core.Combiner.PageController import *
 from application.apps.BasicApp.basicConnections import BasicConnections
 from application.apps.SecondApp.mySecondWindowConnections import SecondConnections
 from application.apps.WebApp.webConnections import WebConnections

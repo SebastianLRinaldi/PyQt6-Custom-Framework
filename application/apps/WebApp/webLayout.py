@@ -16,11 +16,11 @@ from PyQt6.QtGui import *
 from PyQt6.QtWebEngineWidgets import *
 from PyQt6.QtWebEngineCore import *
 
-from application.FrontEnd.C_Grouper.SpliterGroupConfiguration import *
-from application.FrontEnd.C_Grouper.TabGroupConfigureation import *
-from application.FrontEnd.C_Grouper.widgetGroupFrameworks import *
+from application.core.Grouper.SpliterGroupConfiguration import *
+from application.core.Grouper.TabGroupConfigureation import *
+from application.core.Grouper.widgetGroupFrameworks import *
 
-from application.FrontEnd.D_WindowFolder.windowConfigureation import *
+from application.core.Window.windowConfigureation import *
 
 class WebLayout(LayoutManager):
     def __init__(self):
