@@ -8,7 +8,7 @@ class LogicDict(TypedDict):
     Second:SecondLogic
     Web: WebLogic
 
-class PageController:
+class AppConnector:
     def __init__(self, logic: LogicDict):
         self.logic = logic
 

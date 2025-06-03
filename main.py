@@ -16,7 +16,7 @@ import os
 # Add the root directory of your project to the sys.path
 # sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../../')))
 
-from application.core.Combiner.PageController import *
+from application.core.Connect.AppConnector import *
 from application.apps.BasicApp.basicConnections import BasicConnections
 from application.apps.SecondApp.mySecondWindowConnections import SecondConnections
 from application.apps.WebApp.webConnections import WebConnections
@@ -54,7 +54,7 @@ class Dashboard(QMainWindow):
             self.stack.addWidget(page)
 
         # Create the controller
-        self.controller = PageController(self.logic)
+        self.controller = AppConnector(self.logic)
 
 
         menubar = QMenuBar(self)
