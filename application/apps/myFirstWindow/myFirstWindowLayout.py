@@ -20,7 +20,7 @@ from application.FrontEnd.C_Grouper.widgetGroupFrameworks import *
 
 from application.FrontEnd.D_WindowFolder.windowConfigureation import *
 
-class My_First_Page(AppLayoutManager):
+class My_First_Page(LayoutManager):
     def __init__(self):
         super().__init__()
 

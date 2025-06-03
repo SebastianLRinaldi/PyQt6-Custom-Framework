@@ -31,6 +31,7 @@ then you will get in the terminal path
 - but relaunching the terminal with just show that a "New" terminal isntance will use the 
 (.venv) F: path instead
 - essentially confirming that we actiavate the .venv correctly
+- if it doesnt load automatically on a new terminal then you might have to close and repoen the vscode window
 
 - Now here the imports in the file will still show the "import not found" error 
     - the program should still be runnable (assuming there was a current .venv file with all the imports)
