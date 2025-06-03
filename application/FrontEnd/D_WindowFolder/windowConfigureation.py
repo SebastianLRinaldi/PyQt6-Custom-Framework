@@ -10,19 +10,20 @@ class LayoutManager(QWidget):
         self.setWindowTitle("My Progressive FlashCards")
         self.resize(1000, 600)
         self.setup_stylesheets()
+        self.widget_layout = None
 
     def add_widgets_to_window(self, *widgets, setlayout:str=None):
         if setlayout == "V" or setlayout == None:
-            layout = QVBoxLayout()
+            self.widget_layout = QVBoxLayout()
             for index, widget in enumerate(widgets):
-                layout.addWidget(widget)
-            self.setLayout(layout)
+                self.widget_layout.addWidget(widget)
+            self.setLayout(self.widget_layout)
 
         elif setlayout == "H":
-            layout = QHBoxLayout()
+            self.widget_layout = QHBoxLayout()
             for index, widget in enumerate(widgets):
-                layout.addWidget(widget)
-            self.setLayout(layout)
+                self.widget_layout.addWidget(widget)
+            self.setLayout(self.widget_layout)
             
         return self
 
