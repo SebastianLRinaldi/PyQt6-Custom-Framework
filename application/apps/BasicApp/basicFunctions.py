@@ -2,10 +2,10 @@ from PyQt6.QtCore import *
 from PyQt6.QtWidgets import * 
 from PyQt6.QtGui import *
 
-from application.apps.myFirstWindow.myFirstWindowLayout import My_First_Page
+from application.apps.BasicApp.basicLayout import BasicLayout
 
-class FirstPageLogic:
-    def __init__(self, ui: My_First_Page):
+class BasicLogic:
+    def __init__(self, ui: BasicLayout):
         self.ui = ui
 
     def update_widget(self) -> None:

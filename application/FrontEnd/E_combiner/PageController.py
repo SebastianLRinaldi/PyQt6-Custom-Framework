@@ -1,22 +1,22 @@
 from typing import Dict, TypedDict
-from application.apps.myFirstWindow.myFirstWindowFunctions import*
-from application.apps.mySecondWindow.mySecondWindowFunctions import*
-from application.apps.myThirdWindow.myThirdWindowFunctions import*
+from application.apps.BasicApp.basicFunctions import*
+from application.apps.SecondApp.mySecondWindowFunctions import*
+from application.apps.WebApp.webFunctions import*
 
 class LogicDict(TypedDict):
-    first: FirstPageLogic
-    second:SecondPageLogic
-    third: ThirdPageLogic
+    Basic: BasicLogic
+    Second:SecondLogic
+    Web: WebLogic
 
 class PageController:
     def __init__(self, logic: LogicDict):
         self.logic = logic
 
-        self.logic["first"].ui.update_widget_btn.clicked.connect(
-            self.logic["second"].update_widget
+        self.logic["Basic"].ui.update_widget_btn.clicked.connect(
+            self.logic["Second"].update_widget
         )
 
-        self.logic["first"].ui.reset_widget_btn.clicked.connect(
-            lambda: self.logic["second"].ui.name_label.setText("Updated Another Way")
+        self.logic["Basic"].ui.reset_widget_btn.clicked.connect(
+            lambda: self.logic["Second"].ui.name_label.setText("Updated Another Way")
         )
         

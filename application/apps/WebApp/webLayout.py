@@ -22,7 +22,7 @@ from application.FrontEnd.C_Grouper.widgetGroupFrameworks import *
 
 from application.FrontEnd.D_WindowFolder.windowConfigureation import *
 
-class My_Third_Page(LayoutManager):
+class WebLayout(LayoutManager):
     def __init__(self):
         super().__init__()
 

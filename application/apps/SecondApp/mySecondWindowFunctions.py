@@ -2,10 +2,10 @@ from PyQt6.QtCore import *
 from PyQt6.QtWidgets import * 
 from PyQt6.QtGui import *
 
-from application.apps.mySecondWindow.mySecondWindowLayout import My_Second_Page
+from application.apps.SecondApp.mySecondWindowLayout import SecondLayout
 
-class SecondPageLogic:
-    def __init__(self, ui: My_Second_Page):
+class SecondLogic:
+    def __init__(self, ui: SecondLayout):
         self.ui = ui
 
     def update_widget(self) -> None:

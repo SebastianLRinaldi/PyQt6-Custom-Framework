@@ -4,11 +4,11 @@ from PyQt6.QtGui import *
 from PyQt6.QtWebEngineWidgets import *
 from PyQt6.QtWebEngineCore import *
 
-from application.apps.myThirdWindow.myThirdWindowLayout import My_Third_Page
+from application.apps.WebApp.webLayout import WebLayout
 
-class ThirdPageLogic:
-    def __init__(self, ui: My_Third_Page):
-        self.ui: My_Third_Page = ui
+class WebLogic:
+    def __init__(self, ui: WebLayout):
+        self.ui: WebLayout = ui
 
     def change_url(self) -> None:
         url = self.ui.url_input.text()

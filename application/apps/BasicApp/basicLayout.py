@@ -20,31 +20,34 @@ from application.FrontEnd.C_Grouper.widgetGroupFrameworks import *
 
 from application.FrontEnd.D_WindowFolder.windowConfigureation import *
 
-class My_Second_Page(LayoutManager):
+class BasicLayout(LayoutManager):
     def __init__(self):
         super().__init__()
-        self.list_widget = QListWidget()
-        self.name_label = QLabel(text="Enter your name:")
-        self.text_edit = QTextEdit("This is a multi-line text editor")
-        
-        self.radio_button = QRadioButton(text="Select this option")
-        self.check_box = QCheckBox(text="Accept terms and conditions")
-        
-        middleSplit = MasterSpliterGroup(orientation=Qt.Orientation.Vertical)
-        labelsGroup = WidgetGroup(title="Random Labels")
-        btnsGroup = WidgetGroup(title="Random Btns")
-        
-        self.add_widgets_to_window(
-            middleSplit.add_widgets_to_spliter(
-                labelsGroup.add_widgets_to_group(
-                    self.name_label,
-                    self.text_edit,
-                    self.list_widget,
-                ),
 
-                btnsGroup.add_widgets_to_group(
-                    self.radio_button,
-                    self.check_box,
+        self.update_widget_btn = QPushButton(text="Start")
+        self.reset_widget_btn = QPushButton(text="Reset")
+
+        self.label = QLabel(text="Enter your name:")
+        self.check_box = QCheckBox(text="Accept terms and conditions")
+        self.radio_button = QRadioButton(text="Select this option")
+        self.calendar_widget = QCalendarWidget()
+        self.list_widget = QListWidget()
+        self.text_edit = QTextEdit("This is a multi-line text editor")
+
+        middleSplit = MasterSpliterGroup(orientation=Qt.Orientation.Vertical)
+
+        btnGroup = WidgetGroup(title="Web Explore")
+        # window = Window(event_bus)
+        self.add_widgets_to_window(
+
+            middleSplit.add_widgets_to_spliter(
+                self.calendar_widget,
+
+                btnGroup.add_widgets_to_group(
+                    self.update_widget_btn,
+                    self.reset_widget_btn,
                 )
             )
         )
+                
+

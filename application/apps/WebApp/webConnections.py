@@ -1,7 +1,7 @@
-from application.apps.myThirdWindow.myThirdWindowFunctions import*
+from application.apps.WebApp.webFunctions import*
 
-class ThirdPageConnections:
-    def __init__(self, ui: My_Third_Page, logic: ThirdPageLogic):
+class WebConnections:
+    def __init__(self, ui: WebLayout, logic: WebLogic):
         self.ui = ui
         self.logic = logic
         
