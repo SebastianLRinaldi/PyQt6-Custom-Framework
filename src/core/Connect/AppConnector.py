@@ -1,7 +1,7 @@
 from typing import Dict, TypedDict
-from application.apps.BasicApp.basicFunctions import*
-from application.apps.SecondApp.mySecondWindowFunctions import*
-from application.apps.WebApp.webFunctions import*
+from src.apps.BasicApp.basicFunctions import*
+from src.apps.SecondApp.mySecondWindowFunctions import*
+from src.apps.WebApp.webFunctions import*
 
 class LogicDict(TypedDict):
     Basic: BasicLogic

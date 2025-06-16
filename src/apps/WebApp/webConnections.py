@@ -1,4 +1,4 @@
-from application.apps.WebApp.webFunctions import*
+from src.apps.WebApp.webFunctions import*
 
 class WebConnections:
     def __init__(self, ui: WebLayout, logic: WebLogic):

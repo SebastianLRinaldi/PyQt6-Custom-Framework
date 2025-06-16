@@ -2,7 +2,7 @@ from PyQt6.QtCore import *
 from PyQt6.QtWidgets import * 
 from PyQt6.QtGui import *
 
-from application.apps.SecondApp.mySecondWindowLayout import SecondLayout
+from src.apps.SecondApp.mySecondWindowLayout import SecondLayout
 
 class SecondLogic:
     def __init__(self, ui: SecondLayout):

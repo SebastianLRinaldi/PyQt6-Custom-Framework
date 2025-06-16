@@ -16,11 +16,11 @@ from PyQt6.QtGui import *
 from PyQt6.QtMultimedia import *
 from PyQt6.QtMultimediaWidgets import *
 
-from application.core.Grouper.SpliterGroupConfiguration import *
-from application.core.Grouper.TabGroupConfigureation import *
-from application.core.Grouper.widgetGroupFrameworks import *
+from src.core.Grouper.SpliterGroupConfiguration import *
+from src.core.Grouper.TabGroupConfigureation import *
+from src.core.Grouper.widgetGroupFrameworks import *
 
-from application.core.Window.windowConfigureation import *
+from src.core.Window.windowConfigureation import *
 
 
 class MediaBtnControls(LayoutManager):

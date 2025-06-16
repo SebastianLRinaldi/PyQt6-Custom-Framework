@@ -14,11 +14,11 @@ from PyQt6.QtCore import *
 from PyQt6.QtWidgets import * 
 from PyQt6.QtGui import *
 
-from application.core.Grouper.SpliterGroupConfiguration import *
-from application.core.Grouper.TabGroupConfigureation import *
-from application.core.Grouper.widgetGroupFrameworks import *
+from src.core.Grouper.SpliterGroupConfiguration import *
+from src.core.Grouper.TabGroupConfigureation import *
+from src.core.Grouper.widgetGroupFrameworks import *
 
-from application.core.Window.windowConfigureation import *
+from src.core.Window.windowConfigureation import *
 
 class SecondLayout(LayoutManager):
     def __init__(self):

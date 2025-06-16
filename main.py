@@ -16,10 +16,10 @@ import os
 # Add the root directory of your project to the sys.path
 # sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../../')))
 
-from application.core.Connect.AppConnector import *
-from application.apps.BasicApp.basicConnections import BasicConnections
-from application.apps.SecondApp.mySecondWindowConnections import SecondConnections
-from application.apps.WebApp.webConnections import WebConnections
+from src.core.Connect.AppConnector import *
+from src.apps.BasicApp.basicConnections import BasicConnections
+from src.apps.SecondApp.mySecondWindowConnections import SecondConnections
+from src.apps.WebApp.webConnections import WebConnections
 
 class Dashboard(QMainWindow):
     def __init__(self):

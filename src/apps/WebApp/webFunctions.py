@@ -4,7 +4,7 @@ from PyQt6.QtGui import *
 from PyQt6.QtWebEngineWidgets import *
 from PyQt6.QtWebEngineCore import *
 
-from application.apps.WebApp.webLayout import WebLayout
+from src.apps.WebApp.webLayout import WebLayout
 
 class WebLogic:
     def __init__(self, ui: WebLayout):

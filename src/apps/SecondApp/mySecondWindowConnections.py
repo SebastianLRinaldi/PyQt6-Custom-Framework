@@ -1,4 +1,4 @@
-from application.apps.SecondApp.mySecondWindowFunctions import*
+from src.apps.SecondApp.mySecondWindowFunctions import*
 
 class SecondConnections:
     def __init__(self, ui: SecondLayout, logic: SecondLogic):

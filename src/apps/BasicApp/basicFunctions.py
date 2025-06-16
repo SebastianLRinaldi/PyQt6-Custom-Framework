@@ -2,7 +2,7 @@ from PyQt6.QtCore import *
 from PyQt6.QtWidgets import * 
 from PyQt6.QtGui import *
 
-from application.apps.BasicApp.basicLayout import BasicLayout
+from src.apps.BasicApp.basicLayout import BasicLayout
 
 class BasicLogic:
     def __init__(self, ui: BasicLayout):
