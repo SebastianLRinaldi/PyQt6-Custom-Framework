@@ -2,10 +2,6 @@ from PyQt6.QtCore import *
 from PyQt6.QtWidgets import * 
 from PyQt6.QtGui import *
 
-from src.core.Grouper.SpliterGroupConfiguration import *
-from src.core.Grouper.TabGroupConfigureation import *
-from src.core.Grouper.widgetGroupFrameworks import *
-
 from typing import Literal
 
 Orientation = Literal["horizontal", "vertical"]
@@ -92,15 +88,18 @@ class LayoutManager(QWidget):
 
             if "tabs" in data:
                 info = data["tabs"]
+                tab_labels = info.get("tab_labels", [])  # Expecting a list
                 tabs = QTabWidget()
                 for idx, item in enumerate(info["children"]):
                     w = self.build_layout(item)
-                    if isinstance(w, QWidget):
-                        tabs.addTab(w, f"Tab {idx + 1}")
-                    else:
+                    if not isinstance(w, QWidget):
                         container = QWidget()
                         container.setLayout(w)
-                        tabs.addTab(container, f"Tab {idx + 1}")
+                        w = container
+                    if tab_labels is not None:
+                        title = tab_labels[idx] if idx < len(tab_labels) else f"Tab {idx + 1}"
+                        tabs.addTab(w, title)
+
 
                 return tabs
 
@@ -137,15 +136,6 @@ class LayoutManager(QWidget):
 
         raise TypeError("Invalid layout data")
 
-    # def apply_layout(self, layout_data):
-    #     layout_or_widget = self.build_layout(layout_data)
-    #     if isinstance(layout_or_widget, QWidget):
-    #         main_layout = QVBoxLayout()
-    #         main_layout.addWidget(layout_or_widget)
-    #         self.setLayout(main_layout)
-            
-    #     else:
-    #         self.setLayout(layout_or_widget)
 
 
     def apply_layout(self, layout_data):
@@ -162,7 +152,7 @@ class LayoutManager(QWidget):
             # layout_or_widget.setSpacing(0)
             self.setLayout(layout_or_widget)
 
-    def group(self, orientation: Orientation, children:list):
+    def group(self, orientation: Orientation = None, children: list | None = None):
         return {
             "group": {
                 "orientation": orientation,
@@ -170,15 +160,16 @@ class LayoutManager(QWidget):
             }
         }
 
-    def box(self, orientation: Orientation, children:list):
+    def box(self, orientation: Orientation = None, title: str | None = None,children: list | None = None):
         return {
             "box": {
+                "title":title,
                 "orientation": orientation,
                 "children": children
             }
         }
 
-    def splitter(self, orientation: Orientation, children:list):
+    def splitter(self, orientation: Orientation = None, children: list | None = None):
         return {
             "splitter": {
                 "orientation": orientation,
@@ -186,14 +177,15 @@ class LayoutManager(QWidget):
             }
         }
 
-    def tabs(self, children:list):
+    def tabs(self, tab_labels: list = None, children: list | None = None):
         return {
             "tabs": {
+                "tab_labels": tab_labels,
                 "children": children
             }
         }
 
-    def grid(self, children:list, rows=1, columns=None):
+    def grid(self, children: list | None = None, rows=1, columns=None):
         return {
             "grid": {
                 "children": children,
@@ -202,12 +194,31 @@ class LayoutManager(QWidget):
             }
         }
 
-    def stacked(self, children:list):
+    def stacked(self, children: list | None = None):
         return {
             "stacked": {
                 "children": children
             }
         }
+
+
+    # def tabs(self, *children, tab_labels=None):
+    #     return {"tabs": {"children": list(children), "tab_labels": tab_labels}}
+
+    # def splitter(self, *children, orientation="horizontal"):
+    #     return {"splitter": {"orientation": orientation, "children": list(children)}}
+
+    # def group(self, *children, orientation="horizontal"):
+    #     return {"group": {"orientation": orientation, "children": list(children)}}
+
+    # def box(self, *children, orientation="horizontal", title=None):
+    #     return {"box": {"title": title, "orientation": orientation, "children": list(children)}}
+
+    # def grid(self, *children, rows=1, columns=1):
+    #     return {"grid": {"rows": rows, "columns": columns, "children": list(children)}}
+
+    # def stacked(self, *children):
+    #     return {"stacked": {"children": list(children)}}
 
 
     def show_window(self):

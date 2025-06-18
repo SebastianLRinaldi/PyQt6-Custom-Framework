@@ -48,17 +48,10 @@ class CustomWidget(LayoutManager):
         for name, widget_type in self.__annotations__.items():
             setattr(self, name, widget_type())
 
-
-
-
         layout_data = [
             "label",
-            # self.group("horizontal",["label"]),
-            self.group("vertical",["list", "btn"]),
-            self.box("vertical",["list2", "btn3"]),
-            
-
-        
+            self.group(children=["list", "btn"]),
+            self.box(children=["list2", "btn3"]),
         ]
 
         self.apply_layout(layout_data)

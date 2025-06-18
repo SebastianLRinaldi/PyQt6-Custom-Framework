@@ -147,3 +147,67 @@ layout_data = [
         ]
 
 
+layout_data = {
+            "splitter": {
+                "orientation": "vertical",
+                "children": [
+                    "label",
+                    {
+                        "tabs": {
+                            "children": [
+                                {
+                                    "splitter": {
+                                        "orientation": "horizontal",
+                                        "children": [
+                                            "list1",
+                                            {
+                                                "tabs": {
+                                                    "children": [
+                                                        {
+                                                            "grid": {
+                                                                "rows": 2,
+                                                                "columns": 2,
+                                                                "children": [
+                                                                    "grid_label1",
+                                                                    "grid_label2",
+                                                                    "grid_label3",
+                                                                    {
+                                                                        "stacked": {
+                                                                            "children": [
+                                                                                "stacked1",
+                                                                                "stacked2"
+                                                                            ]
+                                                                        }
+                                                                    }
+                                                                ]
+                                                            }
+                                                        },
+                                                        {
+                                                            "splitter": {
+                                                                "orientation": "vertical",
+                                                                "children": [
+                                                                    ["button1", "button2"],
+                                                                    {
+                                                                        "tabs": {
+                                                                            "children": [
+                                                                                ["label2", "list2"],
+                                                                                ["button3", "button4"]
+                                                                            ]
+                                                                        }
+                                                                    }
+                                                                ]
+                                                            }
+                                                        }
+                                                    ]
+                                                }
+                                            }
+                                        ]
+                                    }
+                                },
+                                "deep_label"
+                            ]
+                        }
+                    }
+                ]
+            }
+        }
