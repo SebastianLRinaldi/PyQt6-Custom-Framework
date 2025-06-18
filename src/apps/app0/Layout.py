@@ -12,10 +12,24 @@ from src.core.GUI.UiManger import *
 # from .widgets.CUSTOMWIDGET import YOURWIDGET
 
 
-
-"""
-When you press enter after you type it should either go to the category selection or the next text box below
-"""
 class Layout(UiManager):
+
+    # name : QWidget
+
+    
     def __init__(self):
         super().__init__()
+        self.init_widgets()
+
+
+        layout_data = [
+    
+        ]
+
+        self.apply_layout(layout_data)
+
+
+    def init_widgets(self):
+        for name, widget_type in self.__annotations__.items():
+            widget = widget_type()
+            setattr(self, name, widget)

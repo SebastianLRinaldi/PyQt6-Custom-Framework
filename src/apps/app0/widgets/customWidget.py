@@ -5,11 +5,6 @@ from PyQt6.QtMultimedia import *
 from PyQt6.QtMultimediaWidgets import *
 
 
-from src.core.Grouper.SpliterGroupConfiguration import *
-from src.core.Grouper.TabGroupConfigureation import *
-from src.core.Grouper.widgetGroupFrameworks import *
-
-
 from src.core.GUI.UiManger import *
 
 """
@@ -25,7 +20,7 @@ Something to Override a Known widgte
 """
 If you just need another window with complexlayout in the app
 """
-# class ChunkInput(LayoutManager):
+# class ChunkInput(UiManager):
 #     def __init__(self):
 #         super().__init__()
 #         self.setWindowTitle("Media Controls")
