@@ -23,7 +23,34 @@ from src.core.Grouper.widgetGroupFrameworks import *
 from src.core.Window.windowConfigureation import *
 
 
-class MediaBtnControls(LayoutManager):
+class CustomWidget(LayoutManager):
+
+    label: QLabel
+    list: QListWidget
+    btn: QPushButton
+
+
     def __init__(self):
         super().__init__()
-        self.setWindowTitle("Media Controls")
+        self.init_widgets()
+        self.setWindowTitle("Custom Widget")
+        self.label.setText("Header Label")
+
+        self.btn.setText("Action")
+
+    def init_widgets(self):
+        for name, widget_type in self.__annotations__.items():
+            setattr(self, name, widget_type())
+
+        layout_data = [
+            self.group("horizontal",["label"]),
+            self.group("vertical",["list", "btn"]),
+            
+
+        
+        ]
+
+        self.apply_layout(layout_data)
+
+
+

@@ -33,8 +33,8 @@ class Dashboard(QMainWindow):
         # Define pages with: name, UI class, Logic class, Controller class
         pages = [
             ("Basic", BasicLayout, BasicLogic, BasicConnections),
-            ("Second", SecondLayout, SecondLogic, SecondConnections),
-            ("Web", WebLayout, WebLogic, WebConnections),
+            # ("Second", SecondLayout, SecondLogic, SecondConnections),
+            # ("Web", WebLayout, WebLogic, WebConnections),
         ]
 
         # Step 1: Create UIs

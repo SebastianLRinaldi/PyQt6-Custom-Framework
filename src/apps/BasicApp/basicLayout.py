@@ -14,40 +14,84 @@ from PyQt6.QtCore import *
 from PyQt6.QtWidgets import * 
 from PyQt6.QtGui import *
 
-from src.core.Grouper.SpliterGroupConfiguration import *
-from src.core.Grouper.TabGroupConfigureation import *
-from src.core.Grouper.widgetGroupFrameworks import *
 
 from src.core.Window.windowConfigureation import *
 
+from .widgets.customWidget import CustomWidget
+
+
 class BasicLayout(LayoutManager):
+    
+    another_widget:CustomWidget
+    label: QLabel
+    list: QListWidget
+    btn: QPushButton
+
+    
+
     def __init__(self):
         super().__init__()
+        self.init_widgets()
+        self.label.setText("Header: Word Analysis")
+        self.btn.setText("Main Action")
 
-        self.update_widget_btn = QPushButton(text="Start")
-        self.reset_widget_btn = QPushButton(text="Reset")
 
-        self.label = QLabel(text="Enter your name:")
-        self.check_box = QCheckBox(text="Accept terms and conditions")
-        self.radio_button = QRadioButton(text="Select this option")
-        self.calendar_widget = QCalendarWidget()
-        self.list_widget = QListWidget()
-        self.text_edit = QTextEdit("This is a multi-line text editor")
 
-        middleSplit = MasterSpliterGroup(orientation=Qt.Orientation.Vertical)
+    def init_widgets(self):
+        for name, widget_type in self.__annotations__.items():
+            setattr(self, name, widget_type())
 
-        btnGroup = WidgetGroup(title="Web Explore")
-        # window = Window(event_bus)
-        self.add_widgets_to_window(
+    # def init_widgets(self):
+    #     for name, widget_type in self.__annotations__.items():
+    #         widget = widget_type()
+    #         if isinstance(widget, QListWidget):
+    #             widget.setFlow(QListWidget.Flow.LeftToRight)
+    #             widget.setWrapping(True)
+    #             widget.setResizeMode(QListWidget.ResizeMode.Adjust)
+    #             widget.addItems([f"{name}_item{i}" for i in range(5)])
+    #         setattr(self, name, widget)
 
-            middleSplit.add_widgets_to_spliter(
-                self.calendar_widget,
+        # layout_data = {
+        #     "splitter": {
+        #         "orientation": "vertical",
+        #         "children": [
+        #             "label",
+        #             "another_widget",
+        #             {
+        #                 "tabs": {
+        #                     "children": [
+        #                         "list",
+                                
+        #                         {
+        #                             "grid": {
+        #                                 "rows": 1,
+        #                                 "columns": 2,
+        #                                 "children": [
+        #                                     "btn",
+                                            
+        #                                 ]
+        #                             }
+        #                         }
+        #                     ]
+        #                 }
+        #             }
+        #         ]
+        #     }
+        # }
 
-                btnGroup.add_widgets_to_group(
-                    self.update_widget_btn,
-                    self.reset_widget_btn,
-                )
-            )
-        )
-                
+
+        layout_data = [
+
+            self.splitter("vertical", ["label", "another_widget"]),
+            self.tabs(["list", self.grid(["btn"], 1, 2)])
+
+            
+        ]
+
+
+        self.apply_layout(layout_data)
+
+
+
+
 
