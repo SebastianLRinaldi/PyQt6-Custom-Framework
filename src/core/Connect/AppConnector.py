@@ -5,7 +5,7 @@ from src.apps.WebApp.webFunctions import*
 
 class LogicDict(TypedDict):
     Basic: BasicLogic
-    # Second:SecondLogic
+    Second:SecondLogic
     # Web: WebLogic
 
 class AppConnector:

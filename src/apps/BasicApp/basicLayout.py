@@ -23,9 +23,6 @@ from .widgets.customWidget import CustomWidget
 class BasicLayout(LayoutManager):
     
     another_widget:CustomWidget
-    label: QLabel
-    list: QListWidget
-    btn: QPushButton
 
     label1: QLabel
     label2: QLabel
@@ -41,57 +38,11 @@ class BasicLayout(LayoutManager):
     btn3: QPushButton
     btn4: QPushButton
 
-    # def __init__(self):
-    #     super().__init__()
-    #     self.init_widgets()
-    #     self.label.setText("Header: Word Analysis")
-    #     self.btn.setText("Main Action")
-
-
-    # # def init_widgets(self):
-    # #     for name, widget_type in self.__annotations__.items():
-    # #         setattr(self, name, widget_type())
-
-    # def init_widgets(self):
-    #     for name, widget_type in self.__annotations__.items():
-    #         widget = widget_type()
-    #         if isinstance(widget, QListWidget):
-    #             widget.setFlow(QListWidget.Flow.LeftToRight)
-    #             widget.setWrapping(True)
-    #             widget.setResizeMode(QListWidget.ResizeMode.Adjust)
-    #             widget.addItems([f"{name}_item{i}" for i in range(5)])
-    #         setattr(self, name, widget)
-
-
-
-
-        # layout_data = [
-        #     # "btn",
-        #     # "another_widget",
-        #     # "label"
-        #     "another_widget",
-        #     self.splitter("vertical", ["label", "list",]),
-        #     self.tabs(["list", self.grid(["btn"], 1, 2)])
-
-            
-        # ]
 
     def __init__(self):
         super().__init__()
         self.init_widgets()
-
-        self.label1.setText("Header 1")
-        self.label2.setText("Header 2")
-        self.label3.setText("Header 3")
-        self.label4.setText("Header 4")
-        self.label5.setText("Header 5")
-
-        for i, btn in enumerate([self.btn1, self.btn2, self.btn3, self.btn4], 1):
-            btn.setText(f"Button {i}")
-
-        for i, lst in enumerate([self.list1, self.list2, self.list3, self.list4], 1):
-            lst.addItems([f"Item {j}" for j in range(5)])
-
+        self.set_widgets()
 
         layout_data = [
             "another_widget",
@@ -119,14 +70,13 @@ class BasicLayout(LayoutManager):
                 )
             ]
 
-
-
         self.apply_layout(layout_data)
 
 
-        # self.apply_layout(layout_data)
-        self.print_margins_recursive(self)
-
+    """
+        for name, widget_type in self.__annotations__.items():
+            setattr(self, name, widget_type())
+    """
     def init_widgets(self):
         for name, widget_type in self.__annotations__.items():
             widget = widget_type()
@@ -135,6 +85,19 @@ class BasicLayout(LayoutManager):
                 widget.setWrapping(True)
                 widget.setResizeMode(QListWidget.ResizeMode.Adjust)
             setattr(self, name, widget)
+
+    def set_widgets(self):
+        self.label1.setText("Header 1")
+        self.label2.setText("Header 2")
+        self.label3.setText("Header 3")
+        self.label4.setText("Header 4")
+        self.label5.setText("Header 5")
+
+        for i, btn in enumerate([self.btn1, self.btn2, self.btn3, self.btn4], 1):
+            btn.setText(f"Button {i}")
+
+        for i, lst in enumerate([self.list1, self.list2, self.list3, self.list4], 1):
+            lst.addItems([f"Item {j}" for j in range(5)])
 
 
 

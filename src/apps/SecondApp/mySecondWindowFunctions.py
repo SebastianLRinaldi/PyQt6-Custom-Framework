@@ -8,10 +8,10 @@ class SecondLogic:
     def __init__(self, ui: SecondLayout):
         self.ui = ui
 
-    def update_widget(self) -> None:
-        self.ui.name_label.setText("Set Some Random Text")
+    # def update_widget(self) -> None:
+    #     self.ui.name_label.setText("Set Some Random Text")
 
-    def reset_widget(self) -> None:
-        self.ui.name_label.setText("Reset to default")
+    # def reset_widget(self) -> None:
+    #     self.ui.name_label.setText("Reset to default")
 
     
