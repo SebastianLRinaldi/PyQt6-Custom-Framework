@@ -6,7 +6,7 @@ from src.apps.WebApp.webFunctions import*
 class LogicDict(TypedDict):
     Basic: BasicLogic
     Second:SecondLogic
-    # Web: WebLogic
+    Web: WebLogic
 
 class AppConnector:
     def __init__(self, logic: LogicDict):

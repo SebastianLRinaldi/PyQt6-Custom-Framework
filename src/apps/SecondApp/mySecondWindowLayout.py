@@ -18,7 +18,8 @@ from PyQt6.QtGui import *
 # from src.core.Grouper.TabGroupConfigureation import *
 # from src.core.Grouper.widgetGroupFrameworks import *
 
-from src.core.Window.windowConfigureation import *
+
+from src.core.GUI.UiManger import *
 
 # class SecondLayout(LayoutManager):
 #     def __init__(self):
@@ -49,7 +50,7 @@ from src.core.Window.windowConfigureation import *
 #             )
 #         )
 
-class SecondLayout(LayoutManager):
+class SecondLayout(UiManager):
     # HEADER
     title_label: QLabel
     status_label: QLabel

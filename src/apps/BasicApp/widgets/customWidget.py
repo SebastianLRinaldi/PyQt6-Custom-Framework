@@ -17,10 +17,11 @@ from PyQt6.QtMultimedia import *
 from PyQt6.QtMultimediaWidgets import *
 
 
-from src.core.Window.windowConfigureation import *
+
+from src.core.GUI.UiManger import *
 
 
-class CustomWidget(LayoutManager):
+class CustomWidget(UiManager):
 
     label: QLabel
     list: QListWidget

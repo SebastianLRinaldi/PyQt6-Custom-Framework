@@ -7,7 +7,7 @@ from typing import Literal
 Orientation = Literal["horizontal", "vertical"]
 LayoutType = Literal["group", "splitter", "tabs", "grid", "stacked"]
 
-class LayoutManager(QWidget):
+class UiManager(QWidget):
     def __init__(self):
         super().__init__()
         self.setWindowTitle("App UI")

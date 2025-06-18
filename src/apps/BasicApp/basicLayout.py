@@ -15,12 +15,13 @@ from PyQt6.QtWidgets import *
 from PyQt6.QtGui import *
 
 
-from src.core.Window.windowConfigureation import *
+
+from src.core.GUI.UiManger import *
 
 from .widgets.customWidget import CustomWidget
 
 
-class BasicLayout(LayoutManager):
+class BasicLayout(UiManager):
     
     another_widget:CustomWidget
 

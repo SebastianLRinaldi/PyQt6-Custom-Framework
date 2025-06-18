@@ -9,7 +9,8 @@ from src.core.Grouper.SpliterGroupConfiguration import *
 from src.core.Grouper.TabGroupConfigureation import *
 from src.core.Grouper.widgetGroupFrameworks import *
 
-from src.core.Window.windowConfigureation import *
+
+from src.core.GUI.UiManger import *
 
 """
 Something to Override a Known widgte
