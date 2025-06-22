@@ -50,7 +50,7 @@ from src.core.GUI.UiManger import *
 #             )
 #         )
 
-class SecondLayout(UiManager):
+class Layout(UiManager):
     # HEADER
     title_label: QLabel
     status_label: QLabel

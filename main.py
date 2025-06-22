@@ -17,28 +17,62 @@ import os
 # sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../../')))
 
 from src.core.Connect.AppConnector import *
-from src.apps.BasicApp.basicConnections import BasicConnections
-from src.apps.SecondApp.mySecondWindowConnections import SecondConnections
-from src.apps.WebApp.webConnections import WebConnections
+
+
+import importlib
+import os
+
+def load_apps():
+    base_path = "src.apps"
+    app_dir = os.path.join(os.path.dirname(__file__), "src", "apps")
+    pages = []
+
+    for name in os.listdir(app_dir):
+        app_path = os.path.join(app_dir, name)
+        if not os.path.isdir(app_path):
+            continue
+        if name.startswith("__") or name.lower() == "widgets":
+            continue
+
+        try:
+            layout_mod = importlib.import_module(f"{base_path}.{name}.Layout")
+            logic_mod = importlib.import_module(f"{base_path}.{name}.Functions")
+            conn_mod = importlib.import_module(f"{base_path}.{name}.Connections")
+        except ModuleNotFoundError as e:
+            print(f"[WARNING] Missing module for {name}: {e}")
+            continue
+
+        try:
+            layout_cls = getattr(layout_mod, "Layout")
+            logic_cls = getattr(logic_mod, "Logic")
+            conn_cls = getattr(conn_mod, "Connections")
+        except AttributeError as e:
+            print(f"[WARNING] Missing class for {name}: {e}")
+            continue
+
+        pages.append((name, layout_cls, logic_cls, conn_cls))
+
+    if not pages:
+        print("[ERROR] No valid apps found in src/apps")
+
+    return pages
+
+
 
 class Dashboard(QMainWindow):
     def __init__(self):
         super().__init__()
-        self.setWindowTitle("Car UI")
+        self.setWindowTitle("UI")
         self.resize(800, 480)
 
         self.stack = QStackedWidget()
 
         # Your dynamic page creation
         # Define pages with: name, UI class, Logic class, Controller class
-        pages = [
-            ("Basic", BasicLayout, BasicLogic, BasicConnections),
-            ("Second", SecondLayout, SecondLogic, SecondConnections),
-            ("Web", WebLayout, WebLogic, WebConnections),
-        ]
+        pages = load_apps()
 
         # Step 1: Create UIs
-        self.apps = {name: page_class() for name, page_class, *_ in pages}
+        self.apps = {name: layout_class() for name, layout_class, _, _ in pages}
 
         # Step 2: Create Logic
         self.logic = {name: logic_class(self.apps[name]) for name, _, logic_class, _ in pages}
@@ -54,7 +88,7 @@ class Dashboard(QMainWindow):
             self.stack.addWidget(page)
 
         # Create the controller
-        self.controller = AppConnector(self.logic)
+        self.controller = AppConnector(self.apps, self.logic)
 
 
         menubar = QMenuBar(self)

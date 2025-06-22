@@ -2,10 +2,10 @@ from PyQt6.QtCore import *
 from PyQt6.QtWidgets import * 
 from PyQt6.QtGui import *
 
-from src.apps.BasicApp.basicLayout import BasicLayout
+from src.apps.Basic.Layout import Layout
 
-class BasicLogic:
-    def __init__(self, ui: BasicLayout):
+class Logic:
+    def __init__(self, ui: Layout):
         self.ui = ui
 
     def update_widget(self) -> None:

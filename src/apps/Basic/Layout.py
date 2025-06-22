@@ -21,7 +21,7 @@ from src.core.GUI.UiManger import *
 from .widgets.customWidget import CustomWidget
 
 
-class BasicLayout(UiManager):
+class Layout(UiManager):
     
     another_widget:CustomWidget
 

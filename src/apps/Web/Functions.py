@@ -4,11 +4,11 @@ from PyQt6.QtGui import *
 from PyQt6.QtWebEngineWidgets import *
 from PyQt6.QtWebEngineCore import *
 
-from src.apps.WebApp.webLayout import WebLayout
+from src.apps.Web.Layout import Layout
 
-class WebLogic:
-    def __init__(self, ui: WebLayout):
-        self.ui: WebLayout = ui
+class Logic:
+    def __init__(self, ui: Layout):
+        self.ui: Layout = ui
 
     def change_url(self) -> None:
         url = self.ui.url_input.text()

@@ -1,7 +1,7 @@
-from src.apps.WebApp.webFunctions import*
+from src.apps.Web.Functions import*
 
-class WebConnections:
-    def __init__(self, ui: WebLayout, logic: WebLogic):
+class Connections:
+    def __init__(self, ui: Layout, logic: Logic):
         self.ui = ui
         self.logic = logic
         

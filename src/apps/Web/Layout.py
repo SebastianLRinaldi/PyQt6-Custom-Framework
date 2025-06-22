@@ -75,7 +75,7 @@ from src.core.GUI.UiManger import *
 #             )
 #         )
 
-class WebLayout(UiManager):
+class Layout(UiManager):
     eWebPage: QWebEngineView
     start_page_btn: QPushButton
     disable_element_btn: QPushButton
