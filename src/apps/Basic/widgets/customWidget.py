@@ -18,7 +18,7 @@ from PyQt6.QtMultimediaWidgets import *
 
 
 
-from src.core.GUI.UiManger import *
+from src.core.GUI.UiManager import *
 
 
 class CustomWidget(UiManager):

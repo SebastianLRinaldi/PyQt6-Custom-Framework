@@ -16,7 +16,7 @@ from PyQt6.QtGui import *
 
 
 
-from src.core.GUI.UiManger import *
+from src.core.GUI.UiManager import *
 
 from .widgets.customWidget import CustomWidget
 

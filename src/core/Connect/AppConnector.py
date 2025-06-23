@@ -1,25 +1,3 @@
-# from typing import Dict, TypedDict
-# from src.apps.Basic.Functions import*
-# from src.apps.Second.Functions import*
-# from src.apps.Web.Functions import*
-
-# from src.apps.Basic.Connections import Connections
-# from src.apps.Second.Connections import Connections
-# from src.apps.Web.Connections import Connections
-
-"""
-class AppConnector:
-    basic_ui: BasicLayout
-    second_logic: SecondLogic
-
-    def __init__(self, apps, logic):
-        self.basic_ui = apps["Basic"]
-        self.second_logic = logic["Second"]
-
-        self.basic_ui.btn1.clicked.connect(self.second_logic.somefunction)
-
-"""
-
 from src.apps.Basic.Functions import Logic as BasicLogic  
 from src.apps.Web.Functions import Logic as WebLogic      
 from src.apps.Second.Functions import Logic as SecondLogic
@@ -48,10 +26,21 @@ class AppConnector:
         self.logic = logic
 
         self.init_connections()
-
         self.basic_ui.btn1.clicked.connect(self.second_logic.somefunction)
 
+    """
+    This basically just does this part for us:
+    
+    class AppConnector:
+        basic_ui: BasicLayout
+        second_logic: SecondLogic
 
+        def __init__(self, apps, logic):
+            self.basic_ui = apps["Basic"]
+            self.second_logic = logic["Second"]
+
+            self.basic_ui.btn1.clicked.connect(self.second_logic.somefunction)
+    """
     def init_connections(self):
         for name in self.apps:
             setattr(self, f"{name.lower()}_ui", self.apps[name])

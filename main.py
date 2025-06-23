@@ -64,6 +64,7 @@ class Dashboard(QMainWindow):
         super().__init__()
         self.setWindowTitle("UI")
         self.resize(800, 480)
+        self.setup_stylesheets()
 
         self.stack = QStackedWidget()
 
@@ -110,7 +111,15 @@ class Dashboard(QMainWindow):
         self.switch_to("Basic")
 
     def switch_to(self, app_name):
-        self.stack.setCurrentWidget(self.apps[app_name])
+        try:
+            self.stack.setCurrentWidget(self.apps[app_name])
+        except KeyError:
+            print(f"Invalid app name: {app_name}")
+            print("Valid app names are:", list(self.apps.keys()))
+
+
+    def setup_stylesheets(self):
+        self.setStyleSheet(""" """)
 
 
 # ----- Entry Point -----

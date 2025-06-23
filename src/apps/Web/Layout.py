@@ -20,7 +20,7 @@ from src.core.Grouper.SpliterGroupConfiguration import *
 from src.core.Grouper.TabGroupConfigureation import *
 from src.core.Grouper.widgetGroupFrameworks import *
 
-from src.core.GUI.UiManger import *
+from src.core.GUI.UiManager import *
 
 # class WebLayout(UiManager):
 #     def __init__(self):

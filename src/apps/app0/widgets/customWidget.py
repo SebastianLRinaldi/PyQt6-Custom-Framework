@@ -5,7 +5,7 @@ from PyQt6.QtMultimedia import *
 from PyQt6.QtMultimediaWidgets import *
 
 
-from src.core.GUI.UiManger import *
+from src.core.GUI.UiManager import *
 
 """
 Something to Override a Known widgte

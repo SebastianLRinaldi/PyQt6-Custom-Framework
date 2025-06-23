@@ -32,17 +32,23 @@ then you will get in the terminal path
 (.venv) F: path instead
 - essentially confirming that we actiavate the .venv correctly
 - if it doesnt load automatically on a new terminal then you might have to close and repoen the vscode window
+- Even if you close the window and immediatly open a new terminal it might be too fast before vscode has a chance 
+    to load all things in the configuation and extenstions 
+      so just wait a few more seconds and then make a new termainl should pop up at some point
+
 
 - Now here the imports in the file will still show the "import not found" error 
     - the program should still be runnable (assuming there was a current .venv file with all the imports)
-    - and the .venv is ready to load in pip installs (however after installing they will show as white but no yellow import not found error)
+    - and the .venv is ready to load in pip installs 
+        (however after installing they will show as white but no yellow import not found error)
 
-to reload everything so that the IDE shows the imports as installed (green)
-
+So now to reload everything so that the IDE shows the imports as installed (green)
 - close the current working vscode project window
-- reopen it and now imports should be loaded and everything is runnable 
+- reopen it and give vscode a sec to load everything and 
+    now imports should be loaded (green) and everything is runnable 
 
 when you open a new terminal or run the program you should see that the path is like this
+  every time
 """
 Microsoft Windows [Version 10.0.19045.5854]
 (c) Microsoft Corporation. All rights reserved.
@@ -60,8 +66,11 @@ You might get a message like this:
 [notice] To update, run: python.exe -m pip install --upgrade pip
 """
 
-So after we get to the point where imports show up in the IDE 
-is when we want to upgrade 
+So after we get to the point where installed pip imports show up in the IDE 
+  is when we want to upgrade 
 
-- this is how the python Extension works but show how break when upgrading so we have to manually do it
-  but it works
+- this is how the python Extension works but it breaks when upgrading so we have to manually do it
+  but it works:
+
+so run this command to upgrade pip in the (.venv) path on the terminal
+python.exe -m pip install --upgrade pip

@@ -2,19 +2,17 @@ from PyQt6.QtCore import *
 from PyQt6.QtWidgets import * 
 from PyQt6.QtGui import *
 
-from src.core.GUI.UiManger import *
+from src.core.GUI.UiManager import *
 
 # from .widgets.CUSTOMWIDGET import YOURWIDGET
 
 class Layout(UiManager):
 
     # name : QWidget
-
     
     def __init__(self):
         super().__init__()
         self.init_widgets()
-
 
         layout_data = [
     

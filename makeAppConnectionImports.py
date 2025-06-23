@@ -2,9 +2,15 @@ import os
 
 def generate_imports_and_vars():
     base_path = "src.apps"
-    # __file__ = path to your script
+    
+    """
+    if you have this function in another folder
     # Go up one folder, then into src/apps
     app_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "src", "apps"))
+    if you have it in root
+    app_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), "src", "apps"))
+    """
+    app_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), "src", "apps"))
 
     print(f"Using app_dir: {app_dir}\n")  # debug
     
