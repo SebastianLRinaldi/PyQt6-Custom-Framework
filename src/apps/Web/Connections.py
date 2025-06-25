@@ -1,4 +1,4 @@
-from src.apps.Web.Functions import*
+from .Functions import*
 
 class Connections:
     def __init__(self, ui: Layout, logic: Logic):
