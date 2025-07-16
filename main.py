@@ -1,6 +1,7 @@
 """
 pyqt6 - v. 6.7 (G) || 6.9 (G)
 pyqt6-webengine - v. 6.7 (G)
+PyQt6-WebEngine==6.7
 """
 from PyQt6.QtCore import *
 from PyQt6.QtWidgets import *
@@ -21,6 +22,8 @@ from src.core.Connect.AppConnector import *
 
 import importlib
 import os
+
+from src.core.GUI import UiManager
 
 def load_apps():
     base_path = "src.apps"
@@ -58,6 +61,7 @@ def load_apps():
     return pages
 
 
+from src.core.GUI.UiManager import *
 
 class Dashboard(QMainWindow):
     def __init__(self):
@@ -120,6 +124,10 @@ class Dashboard(QMainWindow):
 
     def setup_stylesheets(self):
         self.setStyleSheet(""" """)
+
+
+
+
 
 
 # ----- Entry Point -----

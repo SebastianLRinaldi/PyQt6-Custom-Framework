@@ -13,6 +13,7 @@ class Layout(UiManager):
     def __init__(self):
         super().__init__()
         self.init_widgets()
+        self.setup_stylesheets()
         self.set_widgets()
 
         layout_data = [
@@ -26,7 +27,9 @@ class Layout(UiManager):
         for name, widget_type in annotations.items():
             widget = widget_type()
             setattr(self, name, widget)
-
+            
+    def setup_stylesheets(self):
+        self.setStyleSheet(""" """)
 
     def set_widgets(self):
         # self.mywidget.setSomething("TEXT")
