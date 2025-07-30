@@ -134,6 +134,34 @@ class UiManager(QWidget):
                 container.setLayout(layout)
                 return container
 
+
+            if "form" in data:
+                info = data["form"]
+                layout = QFormLayout()
+                for label, widget_name in info["children"]:
+                    widget = getattr(self, widget_name)
+                    layout.addRow(label, widget)
+                return layout
+
+
+            if "scroll" in data:
+                info = data["scroll"]
+                child_spec = info["child"]
+                w = self.build_layout(child_spec)
+
+                scroll_area = QScrollArea()
+                scroll_area.setFrameShape(QFrame.Shape.NoFrame)
+                scroll_area.setWidgetResizable(True)
+
+                if isinstance(w, QWidget):
+                    scroll_area.setWidget(w)
+                else:
+                    container = QWidget()
+                    container.setLayout(w)
+                    scroll_area.setWidget(container)
+
+                return scroll_area
+
         raise TypeError("Invalid layout data")
 
 
@@ -198,6 +226,21 @@ class UiManager(QWidget):
         return {
             "stacked": {
                 "children": children
+            }
+        }
+
+    def form(self, children: list[tuple[str, str]]):
+        return {
+            "form": {
+                "children": children
+            }
+        }
+
+
+    def scroll(self, child):
+        return {
+            "scroll": {
+                "child": child
             }
         }
 
