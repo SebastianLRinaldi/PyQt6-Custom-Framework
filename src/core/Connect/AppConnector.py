@@ -1,24 +1,11 @@
-from src.apps.Basic.Functions import Logic as BasicLogic  
-from src.apps.Web.Functions import Logic as WebLogic      
-from src.apps.Second.Functions import Logic as SecondLogic
-from src.apps.app0.Functions import Logic as App0Logic    
+from src.apps.app0.Functions import Logic as App0Logic
 
-from src.apps.Basic.Layout import Layout as BasicLayout   
-from src.apps.Web.Layout import Layout as WebLayout       
-from src.apps.Second.Layout import Layout as SecondLayout 
-from src.apps.app0.Layout import Layout as App0Layout     
-
+from src.apps.app0.Layout import Layout as App0Layout 
 
 
 class AppConnector:
-    basic_logic: BasicLogic
-    web_logic: WebLogic
-    second_logic: SecondLogic
     app0_logic: App0Logic
 
-    basic_ui: BasicLayout
-    web_ui: WebLayout
-    second_ui: SecondLayout
     app0_ui: App0Layout
 
     def __init__(self, apps: dict, logic: dict):
@@ -26,7 +13,7 @@ class AppConnector:
         self.logic = logic
 
         self.init_connections()
-        self.basic_ui.btn1.clicked.connect(self.second_logic.somefunction)
+        # self.basic_ui.btn1.clicked.connect(self.second_logic.somefunction)
 
     """
     This basically just does this part for us:
