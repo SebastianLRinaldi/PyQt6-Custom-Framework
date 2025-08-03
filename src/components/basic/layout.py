@@ -16,8 +16,7 @@ from PyQt6.QtGui import *
 
 
 
-from src.core.gui.uimanager import *
-
+from src.core.gui.ui_manager import *
 from src.components import *
 
 

@@ -5,6 +5,8 @@ from PyQt6.QtWebEngineWidgets import *
 from PyQt6.QtWebEngineCore import *
 
 from .layout import Layout
+from src.components import *
+from src.helpers import *
 
 class Logic:
     def __init__(self, ui: Layout):

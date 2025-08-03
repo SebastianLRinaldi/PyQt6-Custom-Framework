@@ -1,20 +1,15 @@
 from main import Dashboard
-from src.apps.app0 import Component as MainApp
-# from src.components.Basic import CompositeWidget as Basic
-# # from src.widgets.Second import CompositeWidget as Second
-
+from src.apps import * 
 
 class AppConnector:
-    app0: MainApp
-    # basic: Basic
-    # second: Second
+    app0: App0
 
-    
     def __init__(self, main: Dashboard, apps: dict[str, object]):
         self.main = main
         self.apps = apps
         self.init_connections()
 
+        self.app0.layout.another_widget.btn1.clicked.connect(lambda:print("HELLO"))
         self.app0.layout.btn1.clicked.connect(lambda:print("HI"))
 
     def init_connections(self):

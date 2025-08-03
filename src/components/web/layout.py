@@ -17,7 +17,7 @@ from PyQt6.QtWebEngineWidgets import *
 from PyQt6.QtWebEngineCore import *
 
 
-from src.core.gui.uimanager import *
+from src.core.gui.ui_manager import *
 
 from src.components import *
 
