@@ -4,7 +4,7 @@ from PyQt6.QtGui import *
 from PyQt6.QtWebEngineWidgets import *
 from PyQt6.QtWebEngineCore import *
 
-from .Layout import Layout
+from .layout import Layout
 
 class Logic:
     def __init__(self, ui: Layout):

@@ -1,4 +1,4 @@
-from .Functions import*
+from .logic import*
 
 class Connections:
     def __init__(self, ui: Layout, logic: Logic):

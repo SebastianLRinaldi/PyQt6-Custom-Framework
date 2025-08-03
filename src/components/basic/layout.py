@@ -16,14 +16,12 @@ from PyQt6.QtGui import *
 
 
 
-from src.core.GUI.UiManager import *
+from src.core.gui.uimanager import *
 
-from .widgets.customWidget import CustomWidget
+from src.components import *
 
 
 class Layout(UiManager):
-    
-    another_widget:CustomWidget
 
     label1: QLabel
     label2: QLabel
@@ -46,7 +44,6 @@ class Layout(UiManager):
         self.set_widgets()
 
         layout_data = [
-            "another_widget",
                 self.box(
                     title="Top Labels",
                     orientation="horizontal",

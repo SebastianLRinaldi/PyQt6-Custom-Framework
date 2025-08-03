@@ -9,6 +9,11 @@ from PyQt6.QtGui import *
 from PyQt6.QtPrintSupport import *
 from PyQt6.QtWebEngineWidgets import *
 from PyQt6.QtWebEngineCore import *
+
+import importlib
+import pkgutil
+from pathlib import Path
+
 import sys
 import os
 
@@ -17,85 +22,52 @@ import os
 # Add the root directory of your project to the sys.path
 # sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../../')))
 
-from src.core.Connect.AppConnector import *
+from src.core.connect.app_connector import *
 
-
-import importlib
-import os
-
-from src.core.GUI import UiManager
 
 def load_apps():
-    base_path = "src.apps"
-    app_dir = os.path.join(os.path.dirname(__file__), "src", "apps")
-    pages = []
+    base = "src.apps"
+    path = os.path.join(os.path.dirname(__file__), "src", "apps")
+    widgets = {}
 
-    for name in os.listdir(app_dir):
-        app_path = os.path.join(app_dir, name)
-        if not os.path.isdir(app_path):
-            continue
+    for name in os.listdir(path):
         if name.startswith("__") or name.lower() == "widgets":
             continue
 
-        try:
-            layout_mod = importlib.import_module(f"{base_path}.{name}.Layout")
-            logic_mod = importlib.import_module(f"{base_path}.{name}.Functions")
-            conn_mod = importlib.import_module(f"{base_path}.{name}.Connections")
-        except ModuleNotFoundError as e:
-            print(f"[WARNING] Missing module for {name}: {e}")
+        full_path = os.path.join(path, name)
+        if not os.path.isdir(full_path):
             continue
 
         try:
-            layout_cls = getattr(layout_mod, "Layout")
-            logic_cls = getattr(logic_mod, "Logic")
-            conn_cls = getattr(conn_mod, "Connections")
-        except AttributeError as e:
-            print(f"[WARNING] Missing class for {name}: {e}")
-            continue
+            mod = importlib.import_module(f"{base}.{name}")
+            widgets[name] = mod.Component()
+        except Exception as e:
+            print(f"Failed to load {name}: {e}")
 
-        pages.append((name, layout_cls, logic_cls, conn_cls))
-
-    if not pages:
-        print("[ERROR] No valid apps found in src/apps")
-
-    return pages
+    return widgets
 
 
-from src.core.GUI.UiManager import *
+
 
 class Dashboard(QMainWindow):
     def __init__(self):
         super().__init__()
-        self.setWindowTitle("UI")
-        self.resize(800, 480)
-        self.setup_stylesheets()
+        self.setWindowTitle("Widget Dashboard")
+        self.resize(800, 600)
 
         self.stack = QStackedWidget()
+        self.setCentralWidget(self.stack)
 
-        # Your dynamic page creation
-        # Define pages with: name, UI class, Logic class, Controller class
-        pages = load_apps()
+        self.apps = load_apps()
 
-        # Step 1: Create UIs
-        self.apps = {name: layout_class() for name, layout_class, _, _ in pages}
+        for name, widget in self.apps.items():
+            self.stack.addWidget(widget.layout)
 
-        # Step 2: Create Logic
-        self.logic = {name: logic_class(self.apps[name]) for name, _, logic_class, _ in pages}
+        self.setup_menu()
 
-        # Step 3: Create Per-Page Controllers
-        self.page_controllers = {
-            name: controller_class(self.apps[name], self.logic[name])
-            for name, _, _, controller_class in pages
-        }
+        self.controller = AppConnector(self, self.apps)
 
-        # Add pages to the stack
-        for page in self.apps.values():
-            self.stack.addWidget(page)
-
-        # Create the controller
-        self.controller = AppConnector(self.apps, self.logic)
-
-
+    def setup_menu(self):
         menubar = QMenuBar(self)
         app_menu = menubar.addMenu("Apps")
 
@@ -106,29 +78,16 @@ class Dashboard(QMainWindow):
 
         self.setMenuBar(menubar)
 
-        # Main container setup
-        container = QWidget()
-        layout = QVBoxLayout(container)
-        layout.addWidget(self.stack)
-        self.setCentralWidget(container)
-
-        self.switch_to("Basic")
-
     def switch_to(self, app_name):
-        try:
-            self.stack.setCurrentWidget(self.apps[app_name])
-        except KeyError:
+        widget = self.apps.get(app_name)
+        if widget:
+            self.stack.setCurrentWidget(widget.layout)
+        else:
             print(f"Invalid app name: {app_name}")
-            print("Valid app names are:", list(self.apps.keys()))
-
+            print("Valid apps:", list(self.apps.keys()))
 
     def setup_stylesheets(self):
         self.setStyleSheet(""" """)
-
-
-
-
-
 
 # ----- Entry Point -----
 if __name__ == "__main__":

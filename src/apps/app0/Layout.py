@@ -2,13 +2,14 @@ from PyQt6.QtCore import *
 from PyQt6.QtWidgets import * 
 from PyQt6.QtGui import *
 
-from src.core.GUI.UiManager import *
+from src.core.gui.uimanager import *
 
-# from .widgets.CUSTOMWIDGET import YOURWIDGET
+from src.components import *
 
 class Layout(UiManager):
 
-    # mywidget : QWidget
+    btn1: QPushButton
+    another_widget: BasicLayout
     
     def __init__(self):
         super().__init__()
@@ -17,7 +18,11 @@ class Layout(UiManager):
         self.set_widgets()
 
         layout_data = [
-    
+            self.box("vertical", "Apps Widgets", ["btn1"]),
+
+            self.box("vertical", "External component in this App", ["another_widget"]),
+            
+            
         ]
 
         self.apply_layout(layout_data)
@@ -32,5 +37,5 @@ class Layout(UiManager):
         self.setStyleSheet(""" """)
 
     def set_widgets(self):
-        # self.mywidget.setSomething("TEXT")
-        pass
+        self.btn1.setText("Push Me!")
+        
