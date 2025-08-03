@@ -1,0 +1,89 @@
+### NAMING CONVETIONS
+**PEP 8 recommendations**
+Files & folders: snake_case
+Classes: CamelCase (PascalCase)
+Functions & variables: snake_case
+Constants:UPPER_SNAKE_CASE
+
+
+
+
+
+
+
+### NEW PROJECT ENVIRONMENT SETUP
+
+In a new terminal;
+you should see something like this
+"""
+Microsoft Windows [Version 10.0.19045.5854]
+(c) Microsoft Corporation. All rights reserved.
+
+F:\_Small\344 School Python\TrackFootageEditor>
+"""
+then run this command 
+python -m venv .venv
+
+
+you might get this notification from the (python Extension)
+"We noticed a new environment has been created. Do you want to select it for the workspace folder?"
+- hit yes 
+
+- the (.venv) wont show up yet in the terminal path 
+- untill we actiavate the .venv 
+
+so either in a new or the current terminal run this command
+.venv\Scripts\activate
+
+then you will get in the terminal path
+(.venv) F:
+
+- the terminal you are in might have a [yellow triangle with a !] asking you to relaunch the terminal
+- you can do that or just close the current window it will lead to the same result
+
+- but relaunching the terminal with just show that a "New" terminal isntance will use the 
+(.venv) F: path instead
+- essentially confirming that we actiavate the .venv correctly
+- if it doesnt load automatically on a new terminal then you might have to close and repoen the vscode window
+- Even if you close the window and immediatly open a new terminal it might be too fast before vscode has a chance 
+    to load all things in the configuation and extenstions 
+      so just wait a few more seconds and then make a new termainl should pop up at some point
+
+
+- Now here the imports in the file will still show the "import not found" error 
+    - the program should still be runnable (assuming there was a current .venv file with all the imports)
+    - and the .venv is ready to load in pip installs 
+        (however after installing they will show as white but no yellow import not found error)
+
+So now to reload everything so that the IDE shows the imports as installed (green)
+- close the current working vscode project window
+- reopen it and give vscode a sec to load everything and 
+    now imports should be loaded (green) and everything is runnable 
+
+when you open a new terminal or run the program you should see that the path is like this
+  every time
+"""
+Microsoft Windows [Version 10.0.19045.5854]
+(c) Microsoft Corporation. All rights reserved.
+
+(.venv) F:\_Small\344 School Python\SpotifyPlayerClone>
+"""
+
+
+
+### To Upgrade Pip 
+You might get a message like this:
+
+"""
+[notice] A new release of pip is available: 25.0.1 -> 25.1.1
+[notice] To update, run: python.exe -m pip install --upgrade pip
+"""
+
+So after we get to the point where installed pip imports show up in the IDE 
+  is when we want to upgrade 
+
+- this is how the python Extension works but it breaks when upgrading so we have to manually do it
+  but it works:
+
+so run this command to upgrade pip in the (.venv) path on the terminal
+python.exe -m pip install --upgrade pip

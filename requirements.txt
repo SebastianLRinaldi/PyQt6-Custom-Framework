@@ -1,0 +1,8 @@
+PyQt6==6.9.0
+PyQt6-Qt6==6.9.0
+PyQt6-WebEngine==6.7.0
+PyQt6-WebEngine-Qt6==6.7.3        
+PyQt6-WebEngineSubwheel-Qt6==6.7.3
+PyQt6_sip==13.10.2
+ruff==0.11.9
+yt-dlp==2025.5.22
