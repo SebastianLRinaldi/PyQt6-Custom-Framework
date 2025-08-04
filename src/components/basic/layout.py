@@ -17,7 +17,7 @@ from PyQt6.QtGui import *
 
 
 from src.core.gui.ui_manager import *
-from src.components import *
+# from src.components import YourNeededLayoutLogicConnection
 
 
 class Layout(UiManager):
@@ -43,6 +43,7 @@ class Layout(UiManager):
         self.set_widgets()
 
         layout_data = [
+            "temp",
                 self.box(
                     title="Top Labels",
                     orientation="horizontal",
