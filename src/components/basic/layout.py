@@ -43,7 +43,6 @@ class Layout(UiManager):
         self.set_widgets()
 
         layout_data = [
-            "temp",
                 self.box(
                     title="Top Labels",
                     orientation="horizontal",

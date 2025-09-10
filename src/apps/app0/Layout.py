@@ -8,7 +8,8 @@ from src.components import *
 class Layout(UiManager):
 
     btn1: QPushButton
-    another_widget: BasicLayout
+    another_widget: Basic
+    web_widget: Web
     
     def __init__(self):
         super().__init__()
@@ -19,7 +20,9 @@ class Layout(UiManager):
         layout_data = [
             self.box("vertical", "Apps Widgets", ["btn1"]),
 
-            self.box("vertical", "External component in this App", ["another_widget"]),
+            self.box("vertical", "External component in this App", [self.another_widget.layout]),
+
+            self.box("vertical", "EWEB", [self.web_widget.layout]),
             
             
         ]

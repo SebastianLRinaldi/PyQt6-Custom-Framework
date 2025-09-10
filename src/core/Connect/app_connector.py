@@ -9,7 +9,7 @@ class AppConnector:
         self.apps = apps
         self.init_connections()
 
-        self.app0.layout.another_widget.btn1.clicked.connect(lambda:print("HELLO"))
+        self.app0.layout.another_widget.layout.btn1.clicked.connect(lambda:print("HELLO"))
         self.app0.layout.btn1.clicked.connect(lambda:print("HI"))
 
     def init_connections(self):

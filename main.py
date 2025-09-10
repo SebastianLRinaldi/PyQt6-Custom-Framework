@@ -17,6 +17,7 @@ from pathlib import Path
 import sys
 import os
 
+
 # os.environ['QTWEBENGINE_CHROMIUM_FLAGS'] = '--use-gl=angle --gpu --gpu-launcher --in-process-gpu --ignore-gpu-blacklist --ignore-gpu-blocklist'
 
 # Add the root directory of your project to the sys.path

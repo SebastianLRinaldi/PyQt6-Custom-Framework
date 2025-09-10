@@ -7,17 +7,30 @@ from typing import Literal
 Orientation = Literal["horizontal", "vertical"]
 LayoutType = Literal["group", "splitter", "tabs", "grid", "stacked"]
 
+# class Component():
+#     def __init__(self):
+#         super().__init__()
+#         self.layout = Layout()
+#         self.logic = Logic(self.layout)
+#         self.connection = Connections(self.layout, self.logic)
+
+
 class UiManager(QWidget):
     def __init__(self):
         super().__init__()
         self.setWindowTitle("App UI")
-        self.resize(1000, 600)
+        # self.resize(1000, 600)
         self.setup_stylesheets()
         self.widget_layout = None
 
     def build_layout(self, data) -> QWidget | QLayout:
-        if isinstance(data, str):
-            return getattr(self, data)  # user widgets expected here
+        # if isinstance(data, str):
+        #     return getattr(self, data)  # user widgets expected here
+        if isinstance(data, QWidget):
+            return data
+        elif isinstance(data, str):
+            return getattr(self, data)
+
 
         if isinstance(data, list):
             layout = QVBoxLayout()
@@ -56,11 +69,11 @@ class UiManager(QWidget):
                 for item in children:
                     w = self.build_layout(item)
                     if isinstance(w, QWidget):
-                        layout.addWidget(w,  stretch=1)
+                        layout.addWidget(w) # bloats space --> layout.addWidget(w,  stretch=1)
                     else:
                         container = QWidget()
                         container.setLayout(w)
-                        layout.addWidget(container, stretch=1)
+                        layout.addWidget(container) # bloats space --> layout.addWidget(container, stretch=1)
 
                 # layout.setContentsMargins(0, 0, 0, 0)
                 # layout.setSpacing(0)
@@ -139,7 +152,8 @@ class UiManager(QWidget):
                 info = data["form"]
                 layout = QFormLayout()
                 for label, widget_name in info["children"]:
-                    widget = getattr(self, widget_name)
+                    # widget = getattr(self, widget_name)
+                    widget = self.build_layout(widget_name)
                     layout.addRow(label, widget)
                 return layout
 
@@ -162,7 +176,7 @@ class UiManager(QWidget):
 
                 return scroll_area
 
-        raise TypeError("Invalid layout data")
+        raise TypeError("Invalid layout data (Check for self.widgetName)")
 
 
 
@@ -179,6 +193,7 @@ class UiManager(QWidget):
             layout_or_widget.setContentsMargins(0, 0, 0, 0)
             # layout_or_widget.setSpacing(0)
             self.setLayout(layout_or_widget)
+            
 
     def group(self, orientation: Orientation = None, children: list | None = None):
         return {
@@ -236,7 +251,6 @@ class UiManager(QWidget):
             }
         }
 
-
     def scroll(self, child):
         return {
             "scroll": {
@@ -244,24 +258,6 @@ class UiManager(QWidget):
             }
         }
 
-
-    # def tabs(self, *children, tab_labels=None):
-    #     return {"tabs": {"children": list(children), "tab_labels": tab_labels}}
-
-    # def splitter(self, *children, orientation="horizontal"):
-    #     return {"splitter": {"orientation": orientation, "children": list(children)}}
-
-    # def group(self, *children, orientation="horizontal"):
-    #     return {"group": {"orientation": orientation, "children": list(children)}}
-
-    # def box(self, *children, orientation="horizontal", title=None):
-    #     return {"box": {"title": title, "orientation": orientation, "children": list(children)}}
-
-    # def grid(self, *children, rows=1, columns=1):
-    #     return {"grid": {"rows": rows, "columns": columns, "children": list(children)}}
-
-    # def stacked(self, *children):
-    #     return {"stacked": {"children": list(children)}}
 
 
     def show_window(self):
