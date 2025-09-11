@@ -7,13 +7,6 @@ from typing import Literal
 Orientation = Literal["horizontal", "vertical"]
 LayoutType = Literal["group", "splitter", "tabs", "grid", "stacked"]
 
-# class Component():
-#     def __init__(self):
-#         super().__init__()
-#         self.layout = Layout()
-#         self.logic = Logic(self.layout)
-#         self.connection = Connections(self.layout, self.logic)
-
 
 class UiManager(QWidget):
     def __init__(self):
@@ -176,7 +169,7 @@ class UiManager(QWidget):
 
                 return scroll_area
 
-        raise TypeError("Invalid layout data (Check for self.widgetName)")
+        raise TypeError(f"Invalid type in set_layout:  | isQWidget:{isinstance(data, QWidget)} | isQLayout:{isinstance(data, QLayout)} | = Given TYPE: {type(data)}")
 
 
 

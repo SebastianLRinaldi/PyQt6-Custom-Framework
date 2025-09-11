@@ -3,26 +3,22 @@ from PyQt6.QtWidgets import *
 from PyQt6.QtGui import *
 
 from src.core.gui.ui_manager import *
-from src.components import *
+from .bundle import Bundle
 
-class Layout(UiManager):
-
-    btn1: QPushButton
-    another_widget: Basic
-    web_widget: Web
-    
-    def __init__(self):
+class Layout(UiManager, Bundle):
+    def __init__(self, component):
         super().__init__()
-        self.init_widgets()
-        self.setup_stylesheets()
+        self._map_widgets(component)
         self.set_widgets()
+        self.setup_stylesheets()
 
         layout_data = [
-            self.box("vertical", "Apps Widgets", ["btn1"]),
+            
+            self.box("vertical", "Apps Widgets", [self.btn1]),
 
-            self.box("vertical", "External component in this App", [self.another_widget.layout]),
+            self.box("vertical", "External App", [self.another_widget.layout]),
 
-            self.box("vertical", "EWEB", [self.web_widget.layout]),
+            self.box("vertical", "WEB", [self.web_widget.layout]),
             
             
         ]

@@ -6,3 +6,7 @@ class Connections(Bundle):
         self._map_widgets(component)
         self.logic = logic
 
+
+        self.btn1.clicked.connect(self.logic.update_widget)
+        self.btn2.clicked.connect(self.logic.reset_widget)
+

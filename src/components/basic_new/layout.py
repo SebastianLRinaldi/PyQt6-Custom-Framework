@@ -14,34 +14,20 @@ from PyQt6.QtCore import *
 from PyQt6.QtWidgets import * 
 from PyQt6.QtGui import *
 
-
-
 from src.core.gui.ui_manager import *
-# from src.components import YourNeededLayoutLogicConnection
+from .bundle import Bundle
 
+class Layout(UiManager, Bundle):
+    """
+    how you arrange and decorate the hardware before anyone touches it.
+    """
 
-class Layout(UiManager):
-
-    label1: QLabel
-    label2: QLabel
-    label3: QLabel
-    label4: QLabel
-    label5: QLabel
-    list1: QListWidget
-    list2: QListWidget
-    list3: QListWidget
-    list4: QListWidget
-    btn1: QPushButton
-    btn2: QPushButton
-    btn3: QPushButton
-    btn4: QPushButton
-
-
-    def __init__(self):
-        super().__init__()
-        self.init_widgets()
+    def __init__(self, component):
+        super().__init__()  # just calls UiManager.__init__ with no args | WidgetTypes has not init so dont need it 
+        
+        self._map_widgets(component)
+    
         self.set_widgets()
-
         layout_data = [
                 self.box(
                     title="Top Labels",
@@ -69,19 +55,6 @@ class Layout(UiManager):
 
         self.apply_layout(layout_data)
 
-
-    """
-        for name, widget_type in self.__annotations__.items():
-            setattr(self, name, widget_type())
-    """
-    def init_widgets(self):
-        for name, widget_type in self.__annotations__.items():
-            widget = widget_type()
-            if isinstance(widget, QListWidget):
-                widget.setFlow(QListWidget.Flow.LeftToRight)
-                widget.setWrapping(True)
-                widget.setResizeMode(QListWidget.ResizeMode.Adjust)
-            setattr(self, name, widget)
 
     def set_widgets(self):
         self.label1.setText("Header 1")
