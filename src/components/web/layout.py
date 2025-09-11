@@ -1,42 +1,12 @@
-import os
-import sys
-import time
-import re
-
-import threading
-from threading import Thread
-from enum import Enum
-from queue import Queue
-from typing import List
-from datetime import timedelta
-
-from PyQt6.QtCore import *
-from PyQt6.QtWidgets import * 
-from PyQt6.QtGui import *
-from PyQt6.QtWebEngineWidgets import *
-from PyQt6.QtWebEngineCore import *
-
-
 from src.core.gui.ui_manager import *
+from .bundle import Bundle
 
-from src.components import *
 
+class Layout(UiManager, Bundle):
 
-class Layout(UiManager):
-    eWebPage: QWebEngineView
-    start_page_btn: QPushButton
-    disable_element_btn: QPushButton
-    inject_css_btn: QPushButton
-    highlight_elm_btn: QPushButton
-    design_mode_btn: QPushButton
-    devtools_btn: QPushButton
-    url_input: QLineEdit
-    change_url_btn: QPushButton
-    devtools_view: QWebEngineView
-
-    def __init__(self):
+    def __init__(self, component):
         super().__init__()
-        self.init_widgets()
+        self._map_widgets(component)
         self.set_widgets()
 
         layout_data = [
@@ -63,10 +33,6 @@ class Layout(UiManager):
 
         self.apply_layout(layout_data)
 
-    def init_widgets(self):
-        for name, widget_type in self.__annotations__.items():
-            widget = widget_type()
-            setattr(self, name, widget)
 
     def set_widgets(self):
         self.eWebPage.setUrl(QUrl("chrome://gpu"))

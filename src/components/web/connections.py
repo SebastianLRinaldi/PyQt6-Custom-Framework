@@ -1,36 +1,36 @@
 from .logic import Logic
-from .layout import Layout
+from .bundle import Bundle
 
-class Connections:
-    def __init__(self, ui: Layout, logic: Logic):
-        self.ui = ui
+class Connections(Bundle):
+    def __init__(self, component, logic: Logic):
+        self._map_widgets(component)
         self.logic = logic
         
-        self.ui.start_page_btn.clicked.connect(
+        self.start_page_btn.clicked.connect(
             lambda: self.logic.load_url("https://open.spotify.com/embed/playlist/37i9dQZEVXcRbPtT6vrrSL")
             )
         
-        self.ui.disable_element_btn.clicked.connect(
+        self.disable_element_btn.clicked.connect(
             lambda: self.logic.disable_element("/html/body/div/div/div/div[4]")
             )
         
-        self.ui.inject_css_btn.clicked.connect(
+        self.inject_css_btn.clicked.connect(
             lambda:self.logic.inject_css("/html/body")
             )
         
-        self.ui.highlight_elm_btn.clicked.connect(
+        self.highlight_elm_btn.clicked.connect(
             lambda:self.logic.highlight_element("/html/body/div/div/div/div[1]/div[1]/div")
             )
         
-        self.ui.design_mode_btn.clicked.connect(
+        self.design_mode_btn.clicked.connect(
             self.logic.activate_design_mode
             )
         
-        self.ui.devtools_btn.clicked.connect(
+        self.devtools_btn.clicked.connect(
             self.logic.activate_devtools
             )
         
-        self.ui.change_url_btn.clicked.connect(
+        self.change_url_btn.clicked.connect(
             self.logic.change_url
             )
         
