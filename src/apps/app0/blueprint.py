@@ -4,7 +4,7 @@ from PyQt6.QtGui import *
 
 from src.components import *
 
-class Bundle:
+class BluePrint:
     btn1: QPushButton
     another_widget: BasicNew
     web_widget: Web

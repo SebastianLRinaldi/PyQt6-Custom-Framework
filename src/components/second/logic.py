@@ -2,13 +2,15 @@ from PyQt6.QtCore import *
 from PyQt6.QtWidgets import * 
 from PyQt6.QtGui import *
 
-from .layout import Layout
-# from src.components import YourNeededLayoutLogicConnection
+from src.helpers import *
+from .blueprint import Blueprint
 from src.helpers import *
 
-class Logic:
-    def __init__(self, ui: Layout):
-        self.ui = ui
+class Logic(Blueprint):
+
+    def __init__(self, component):
+        super().__init__()
+        self._map_widgets(component)
 
     def somefunction(self):
         print("HI")

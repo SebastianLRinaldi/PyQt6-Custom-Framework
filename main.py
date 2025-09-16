@@ -26,6 +26,30 @@ import os
 from src.core.connect.app_connector import *
 
 
+# def load_apps():
+#     base = "src.apps"
+#     path = os.path.join(os.path.dirname(__file__), "src", "apps")
+#     widgets = {}
+
+#     for name in os.listdir(path):
+#         if name.startswith("__") or name.lower() == "widgets":
+#             continue
+
+#         full_path = os.path.join(path, name)
+#         if not os.path.isdir(full_path):
+#             continue
+
+#         try:
+#             comp = importlib.import_module(f"{base}.{name}").Component()
+#             for attr in comp.__class__.__annotations__:
+#                 if not hasattr(comp, attr):
+#                     raise AttributeError(f"{base}.{name}.Component missing '{attr}'")
+#             widgets[name] = comp
+#         except Exception as e:
+#             raise RuntimeError(f"Error in {base}.{name}: {e}")
+
+#     return widgets
+
 def load_apps():
     base = "src.apps"
     path = os.path.join(os.path.dirname(__file__), "src", "apps")
@@ -38,15 +62,9 @@ def load_apps():
         full_path = os.path.join(path, name)
         if not os.path.isdir(full_path):
             continue
-
-        try:
-            comp = importlib.import_module(f"{base}.{name}").Component()
-            for attr in comp.__class__.__annotations__:
-                if not hasattr(comp, attr):
-                    raise AttributeError(f"{base}.{name}.Component missing '{attr}'")
-            widgets[name] = comp
-        except Exception as e:
-            raise RuntimeError(f"Error in {base}.{name}: {e}")
+        
+        comp = importlib.import_module(f"{base}.{name}").Component()
+        widgets[name] = comp
 
     return widgets
 
@@ -65,7 +83,7 @@ class Dashboard(QMainWindow):
         self.apps = load_apps()
 
         for name, widget in self.apps.items():
-            self.stack.addWidget(widget.layout)
+            self.stack.addWidget(widget)
 
         self.setup_menu()
 

@@ -2,7 +2,7 @@ from PyQt6.QtCore import *
 from PyQt6.QtWidgets import * 
 from PyQt6.QtGui import *
 
-class Bundle:
+class Blueprint:
     # label1: QLabel
     # btn1: QPushButton
 

@@ -3,22 +3,26 @@ from PyQt6.QtWidgets import *
 from PyQt6.QtGui import *
 
 from typing import Literal
+from src.contracts.component_interface import *
 
 Orientation = Literal["horizontal", "vertical"]
 LayoutType = Literal["group", "splitter", "tabs", "grid", "stacked"]
 
 
-class UiManager(QWidget):
+class LayoutBuilder():
     def __init__(self):
         super().__init__()
-        self.setWindowTitle("App UI")
-        # self.resize(1000, 600)
-        self.setup_stylesheets()
-        self.widget_layout = None
+
+    def apply_layout(self, component:ComponentInterface, structure: StructureInterface):
+        layout_or_widget = self.build_layout(structure.layout_data)
+        
+        layout_or_widget.setContentsMargins(0, 0, 0, 0)
+        component.setLayout(layout_or_widget)
 
     def build_layout(self, data) -> QWidget | QLayout:
         # if isinstance(data, str):
         #     return getattr(self, data)  # user widgets expected here
+        print(data)
         if isinstance(data, QWidget):
             return data
         elif isinstance(data, str):
@@ -171,23 +175,6 @@ class UiManager(QWidget):
 
         raise TypeError(f"Invalid type in set_layout:  | isQWidget:{isinstance(data, QWidget)} | isQLayout:{isinstance(data, QLayout)} | = Given TYPE: {type(data)}")
 
-
-
-    def apply_layout(self, layout_data):
-        layout_or_widget = self.build_layout(layout_data)
-
-        if isinstance(layout_or_widget, QWidget):
-            # If it's already a widget with its own layout, set it as central widget
-            self.setLayout(QVBoxLayout())  # force minimal root layout if needed
-            self.layout().addWidget(layout_or_widget)
-            # self.layout().setContentsMargins(0, 0, 0, 0)
-            # self.layout().setSpacing(0)
-        else:
-            layout_or_widget.setContentsMargins(0, 0, 0, 0)
-            # layout_or_widget.setSpacing(0)
-            self.setLayout(layout_or_widget)
-            
-
     def group(self, orientation: Orientation = None, children: list | None = None):
         return {
             "group": {
@@ -250,30 +237,3 @@ class UiManager(QWidget):
                 "child": child
             }
         }
-
-
-
-    def show_window(self):
-        self.show()
-
-    def setup_stylesheets(self):
-
-        self.setStyleSheet("""
-            QMainWindow {
-                background-color: #1a0d1c;
-            }
-            QLabel {
-                background-color: #AAAAAA;
-            }
-
-        """)
-    def print_margins_recursive(self, widget: QWidget):
-        layout = widget.layout()
-        if layout:
-            margins = layout.contentsMargins()
-            print(f"{widget.__class__.__name__} margins:", margins.left(), margins.top(), margins.right(), margins.bottom(), "spacing:", layout.spacing())
-            for i in range(layout.count()):
-                item = layout.itemAt(i)
-                child = item.widget()
-                if child:
-                    self.print_margins_recursive(child)

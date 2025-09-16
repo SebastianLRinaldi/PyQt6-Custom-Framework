@@ -1,70 +1,22 @@
-import os
-import sys
-import time
-import re
-
-import threading
-from threading import Thread
-from enum import Enum
-from queue import Queue
-from typing import List
-from datetime import timedelta
-
 from PyQt6.QtCore import *
 from PyQt6.QtWidgets import * 
 from PyQt6.QtGui import *
 
-from src.core.gui.ui_manager import *
-# from src.components import YourNeededLayoutLogicConnection
+from src.core.gui.layout_builder import LayoutBuilder
+from .blueprint import Blueprint
 
+class Structure(LayoutBuilder, Blueprint):
+    """
+    Where you arrange and decorate the widgets
+    """
 
-
-class Layout(UiManager):
-    # HEADER
-    title_label: QLabel
-    status_label: QLabel
-    user_label: QLabel
-    logout_btn: QPushButton
-    search_bar: QLineEdit
-    search_btn: QPushButton
-
-    # SIDEBAR
-    nav_list: QListWidget
-
-    # DASHBOARD TAB
-    graph1: QLabel
-    graph2: QLabel
-    counter1: QLCDNumber
-    counter2: QLCDNumber
-    activity_table: QTableWidget
-
-    # JOBS TAB
-    job_list: QListWidget
-    job_details: QTextEdit
-    job_form_label: QLabel
-    job_start_btn: QPushButton
-
-    # LOGS TAB
-    filter_input: QLineEdit
-    log_level_combo: QComboBox
-    date_filter: QDateTimeEdit
-    logs_table: QTableView
-    export_logs_btn: QPushButton
-
-    # SETTINGS TAB
-    theme_dark: QRadioButton
-    theme_light: QRadioButton
-    enable_notifications: QCheckBox
-    language_selector: QComboBox
-    save_settings_btn: QPushButton
-    reset_settings_btn: QPushButton
-
-    def __init__(self):
+    def __init__(self, component):
         super().__init__()
-        self.init_widgets()
+        
+        self._map_widgets(component)
         self.set_widgets()
 
-        layout_data = [
+        self.layout_data = [
             self.box("horizontal", title="Header", children=[
                 self.group("horizontal", ["title_label", "status_label"]),
                 self.group("horizontal", ["search_bar", "search_btn"]),
@@ -101,22 +53,22 @@ class Layout(UiManager):
             ])
         ]
 
-        self.apply_layout(layout_data)
+        self.apply_layout(component, self)
 
-    def init_widgets(self):
-        for name, widget_type in self.__annotations__.items():
-            widget = widget_type()
+    # def init_widgets(self):
+    #     for name, widget_type in self.__annotations__.items():
+    #         widget = widget_type()
 
-            match widget:
-                case QTableWidget():
-                    widget.setRowCount(5)
-                    widget.setColumnCount(3)
-                case QTableView():
-                    widget.setModel(QStandardItemModel())
-                case QListWidget():
-                    widget.addItems([f"Item {i}" for i in range(10)])
+    #         match widget:
+    #             case QTableWidget():
+    #                 widget.setRowCount(5)
+    #                 widget.setColumnCount(3)
+    #             case QTableView():
+    #                 widget.setModel(QStandardItemModel())
+    #             case QListWidget():
+    #                 widget.addItems([f"Item {i}" for i in range(10)])
 
-            setattr(self, name, widget)
+    #         setattr(self, name, widget)
 
     def set_widgets(self):
         self.title_label.setText("Data Dashboard")

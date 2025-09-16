@@ -5,10 +5,10 @@ from PyQt6.QtWebEngineWidgets import *
 from PyQt6.QtWebEngineCore import *
 
 from src.helpers import *
-from .bundle import Bundle
+from .blueprint import Blueprint
 from src.helpers import *
 
-class Logic(Bundle):
+class Logic(Blueprint):
 
     def __init__(self, component):
         self._map_widgets(component)

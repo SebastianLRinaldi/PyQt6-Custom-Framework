@@ -1,23 +1,11 @@
-import os
-import sys
-import time
-import re
-
-import threading
-from threading import Thread
-from enum import Enum
-from queue import Queue
-from typing import List
-from datetime import timedelta
-
 from PyQt6.QtCore import *
 from PyQt6.QtWidgets import * 
 from PyQt6.QtGui import *
 
-from src.core.gui.ui_manager import *
-from .bundle import Bundle
+from src.core.gui.layout_builder import LayoutBuilder
+from .blueprint import Blueprint
 
-class Layout(UiManager, Bundle):
+class Structure(LayoutBuilder, Blueprint):
     """
     how you arrange and decorate the hardware before anyone touches it.
     """
@@ -28,7 +16,7 @@ class Layout(UiManager, Bundle):
         self._map_widgets(component)
     
         self.set_widgets()
-        layout_data = [
+        self.layout_data = [
                 self.box(
                     title="Top Labels",
                     orientation="horizontal",
@@ -53,7 +41,7 @@ class Layout(UiManager, Bundle):
                 )
             ]
 
-        self.apply_layout(layout_data)
+        self.apply_layout(component, self)
 
 
     def set_widgets(self):

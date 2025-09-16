@@ -1,12 +1,16 @@
-from .layout import Layout
+from PyQt6.QtWidgets import QWidget
+
+from .structure_ import Structure
 from .logic import Logic
 from .connections import Connections
-from .bundle import Bundle
+from .blueprint import BluePrint
 
-class Component(Bundle):
+class Component(QWidget, BluePrint):
     def __init__(self):
+        super().__init__()
         self._init_widgets()
-
-        self.layout = Layout(self)
+        
+        self.structure = Structure(self)
         self.logic = Logic(self)
         self.connection = Connections(self, self.logic)
+

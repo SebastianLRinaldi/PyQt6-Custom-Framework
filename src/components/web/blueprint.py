@@ -4,7 +4,7 @@ from PyQt6.QtGui import *
 from PyQt6.QtWebEngineWidgets import *
 from PyQt6.QtWebEngineCore import *
 
-class Bundle:
+class Blueprint:
     eWebPage: QWebEngineView
     start_page_btn: QPushButton
     disable_element_btn: QPushButton

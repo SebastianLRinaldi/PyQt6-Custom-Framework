@@ -1,7 +1,7 @@
 from .logic import Logic
-from .bundle import Bundle
+from .blueprint import BluePrint
 
-class Connections(Bundle):
+class Connections(BluePrint):
     def __init__(self, component, logic: Logic):
         self._map_widgets(component)
         self.logic = logic

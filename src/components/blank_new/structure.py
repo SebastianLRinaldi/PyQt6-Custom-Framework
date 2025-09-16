@@ -2,10 +2,10 @@ from PyQt6.QtCore import *
 from PyQt6.QtWidgets import * 
 from PyQt6.QtGui import *
 
-from src.core.gui.ui_manager import *
-from .bundle import Bundle
+from src.core.gui.layout_builder import LayoutBuilder
+from .blueprint import Blueprint
 
-class Layout(UiManager, Bundle):
+class Structure(LayoutBuilder, Blueprint):
     """
     Where you arrange and decorate the widgets
     """
@@ -16,9 +16,9 @@ class Layout(UiManager, Bundle):
         self._map_widgets(component)
         self.set_widgets()
         
-        layout_data = []
+        self.layout_data = []
 
-        self.apply_layout(layout_data)
+        self.apply_layout(component, self)
 
 
     def set_widgets(self):
