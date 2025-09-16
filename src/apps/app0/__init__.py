@@ -1,6 +1,6 @@
 from PyQt6.QtWidgets import QWidget
 
-from .structure_ import Structure
+from .structure import Structure
 from .logic import Logic
 from .connections import Connections
 from .blueprint import BluePrint

@@ -17,3 +17,4 @@ class Logic(Blueprint):
     def __init__(self, component):
         super().__init__()
         self._map_widgets(component)
+        self.component = component
