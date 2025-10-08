@@ -176,6 +176,10 @@ class LayoutBuilder():
         raise TypeError(f"Invalid type in set_layout:  | isQWidget:{isinstance(data, QWidget)} | isQLayout:{isinstance(data, QLayout)} | = Given TYPE: {type(data)}")
 
     def group(self, orientation: Orientation = None, children: list | None = None):
+        """ 
+        A simple way to create a group of widgets
+        - Helpful for things like making differnt orientations of widgets in the same component
+        """
         return {
             "group": {
                 "orientation": orientation,
@@ -184,6 +188,10 @@ class LayoutBuilder():
         }
 
     def box(self, orientation: Orientation = None, title: str | None = None,children: list | None = None):
+        """
+        Functions like group but with an optional title for a group of widgets
+        - Adds a nice border around the group
+        """
         return {
             "box": {
                 "title":title,
@@ -193,6 +201,10 @@ class LayoutBuilder():
         }
 
     def splitter(self, orientation: Orientation = None, children: list | None = None):
+        """
+        Will add a draggable splitter bar between each widget.
+        - The widgets will be stacked with a spliter line in that orientation 
+        """
         return {
             "splitter": {
                 "orientation": orientation,
@@ -201,6 +213,11 @@ class LayoutBuilder():
         }
 
     def tabs(self, tab_labels: list = None, children: list | None = None):
+        """
+        Will make a new tab for each widget in children
+        - tab labels and tab widgets are not matched like form (label, widget)
+        - You will need to make sure order of widgets follows order of labels
+        """
         return {
             "tabs": {
                 "tab_labels": tab_labels,
@@ -225,6 +242,11 @@ class LayoutBuilder():
         }
 
     def form(self, children: list[tuple[str, str]]):
+        """
+        A way to make label:widget pairings as one row
+        - Children are made as (label, widget)
+        - Stacks vertically for each paring
+        """
         return {
             "form": {
                 "children": children

@@ -17,28 +17,9 @@ class Structure(LayoutBuilder, Blueprint):
     
         self.set_widgets()
         self.layout_data = [
-                self.box(
-                    title="Top Labels",
-                    orientation="horizontal",
-                    children=["label1", "label2", "label3", "label4", "label5"]
-                ),
-                self.splitter(
-                    orientation="horizontal",
-                    children=[
-                        self.group(
-                            orientation="vertical",
-                            children=["list1", "btn1", "btn2"]
-                        ),
-                        self.group(
-                            orientation="vertical",
-                            children=["list2", "btn3", "btn4"]
-                        ),
-                        self.group(
-                            orientation="vertical",
-                            children=["list3", "list4"]
-                        )
-                    ]
-                )
+            self.form()
+            
+                
             ]
 
         self.apply_layout(component, self)
