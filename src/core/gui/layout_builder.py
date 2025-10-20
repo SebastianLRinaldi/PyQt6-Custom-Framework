@@ -22,7 +22,7 @@ class LayoutBuilder():
     def build_layout(self, data) -> QWidget | QLayout:
         # if isinstance(data, str):
         #     return getattr(self, data)  # user widgets expected here
-        print(data)
+
         if isinstance(data, QWidget):
             return data
         elif isinstance(data, str):
