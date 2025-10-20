@@ -4,9 +4,8 @@ from PyQt6.QtGui import *
 from PyQt6.QtWebEngineWidgets import *
 from PyQt6.QtWebEngineCore import *
 
-from src.helpers import *
+# from src.helpers import *
 from .blueprint import Blueprint
-from src.helpers import *
 
 class Logic(Blueprint):
 

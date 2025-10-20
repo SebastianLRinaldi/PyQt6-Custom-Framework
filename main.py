@@ -38,7 +38,7 @@ def load_apps():
         full_path = os.path.join(path, name)
         if not os.path.isdir(full_path):
             continue
-        
+        print(f"{base}.{name}")
         comp = importlib.import_module(f"{base}.{name}").Component()
         widgets[name] = comp
 
