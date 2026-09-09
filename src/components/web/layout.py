@@ -1,18 +1,41 @@
+import os
+import sys
+import time
+import re
+
+import threading
+from threading import Thread
+from enum import Enum
+from queue import Queue
+from typing import List
+from datetime import timedelta
+
 from PyQt6.QtCore import *
 from PyQt6.QtWidgets import * 
 from PyQt6.QtGui import *
+from PyQt6.QtWebEngineWidgets import *
+from PyQt6.QtWebEngineCore import *
 
-from src.core.gui.layout_builder import LayoutBuilder
-from .blueprint import Blueprint
+from src.core.gui.uimanager import *
 
-class Structure(LayoutBuilder, Blueprint):
+class Layout(UiManager):
+    eWebPage: QWebEngineView
+    start_page_btn: QPushButton
+    disable_element_btn: QPushButton
+    inject_css_btn: QPushButton
+    highlight_elm_btn: QPushButton
+    design_mode_btn: QPushButton
+    devtools_btn: QPushButton
+    url_input: QLineEdit
+    change_url_btn: QPushButton
+    devtools_view: QWebEngineView
 
-    def __init__(self, component):
+    def __init__(self):
         super().__init__()
-        self._map_widgets(component)
+        self.init_widgets()
         self.set_widgets()
 
-        self.layout_data = [
+        layout_data = [
             self.splitter("vertical", [
                 "eWebPage",
                 self.tabs(tab_labels=["Web Explore", "Web Editor", "Search Tools"], children=[
@@ -34,8 +57,12 @@ class Structure(LayoutBuilder, Blueprint):
             ])
         ]
 
-        self.apply_layout(component, self)
+        self.apply_layout(layout_data)
 
+    def init_widgets(self):
+        for name, widget_type in self.__annotations__.items():
+            widget = widget_type()
+            setattr(self, name, widget)
 
     def set_widgets(self):
         self.eWebPage.setUrl(QUrl("chrome://gpu"))

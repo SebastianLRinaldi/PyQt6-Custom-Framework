@@ -2,21 +2,35 @@ from PyQt6.QtCore import *
 from PyQt6.QtWidgets import * 
 from PyQt6.QtGui import *
 
-from src.core.gui.layout_builder import LayoutBuilder
-from .blueprint import Blueprint
+from src.core.gui.uimanager import *
 
-class Structure(LayoutBuilder, Blueprint):
-    """
-    how you arrange and decorate the hardware before anyone touches it.
-    """
+# from .widgets.CUSTOMWIDGET import YOURWIDGET
 
-    def __init__(self, component):
-        super().__init__()  # just calls UiManager.__init__ with no args | WidgetTypes has no init so dont need it 
-        
-        self._map_widgets(component)
-    
+class Layout(UiManager):
+
+
+    label1: QLabel
+    label2: QLabel
+    label3: QLabel
+    label4: QLabel
+    label5: QLabel
+    list1: QListWidget
+    list2: QListWidget
+    list3: QListWidget
+    list4: QListWidget
+    btn1: QPushButton
+    btn2: QPushButton
+    btn3: QPushButton
+    btn4: QPushButton
+
+
+    def __init__(self):
+        super().__init__()
+        self.init_widgets()
         self.set_widgets()
-        self.layout_data = [
+
+        layout_data = [
+            # "another_widget",
                 self.box(
                     title="Top Labels",
                     orientation="horizontal",
@@ -41,8 +55,18 @@ class Structure(LayoutBuilder, Blueprint):
                 )
             ]
 
-        self.apply_layout(component, self)
+        self.apply_layout(layout_data)
 
+
+
+    def init_widgets(self):
+        annotations = getattr(self.__class__, "__annotations__", {})
+        for name, widget_type in annotations.items():
+            widget = widget_type()
+            setattr(self, name, widget)
+            
+    def setup_stylesheets(self):
+        self.setStyleSheet(""" """)
 
     def set_widgets(self):
         self.label1.setText("Header 1")
@@ -56,9 +80,4 @@ class Structure(LayoutBuilder, Blueprint):
 
         for i, lst in enumerate([self.list1, self.list2, self.list3, self.list4], 1):
             lst.addItems([f"Item {j}" for j in range(5)])
-
-
-
-
-
 

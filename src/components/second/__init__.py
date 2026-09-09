@@ -1,16 +1,10 @@
-from PyQt6.QtWidgets import QWidget
-
-from .structure import Structure
+from .layout import Layout
 from .logic import Logic
 from .connections import Connections
-from .blueprint import Blueprint
 
-class Component(QWidget, Blueprint):
+class CompositeWidget():
     def __init__(self):
         super().__init__()
-        self._init_widgets()
-        
-        self.structure = Structure(self)
-        self.logic = Logic(self)
-        self.connection = Connections(self, self.logic)
-
+        self.layout = Layout()
+        self.logic = Logic(self.layout)
+        self.connections = Connections(self.layout, self.logic)

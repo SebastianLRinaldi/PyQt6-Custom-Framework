@@ -5,34 +5,7 @@ Classes: CamelCase (PascalCase)
 Functions & variables: snake_case
 Constants:UPPER_SNAKE_CASE
 
-0.1. Dont select a interpreter 
 
-0. Open new terminal in vscode 
-  (ctrl + shift + `)
-
-1. python -m venv .venv
-
-2. .venv\Scripts\activate (might have to reopen the terminal)
-
-2.1. Dont hit add to workspace vscode pop up
-
-3. Close termainl 
-
-3.1.1 Make or Open any .py in vs code
-
-3.1.2 Select venv interpreter - bottom right 
-
-3.2. relaunch the terminal 
-  (venv should show in terminal)
-
-4. close then reopen the current working vscode project window
-
-4.1.  Install default libraries with pip: 
-  pip install -r requirements.txt 
-
-5. Update pip if you want: python.exe -m pip install --upgrade pip
-
-6. Run main 
 
 
 
@@ -76,9 +49,6 @@ then you will get in the terminal path
     to load all things in the configuation and extenstions 
       so just wait a few more seconds and then make a new termainl should pop up at some point
 
-
-###
-pip install -r /path/to/requirements.txt
 
 - Now here the imports in the file will still show the "import not found" error 
     - the program should still be runnable (assuming there was a current .venv file with all the imports)

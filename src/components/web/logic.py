@@ -4,35 +4,30 @@ from PyQt6.QtGui import *
 from PyQt6.QtWebEngineWidgets import *
 from PyQt6.QtWebEngineCore import *
 
-# from src.helpers import *
-from .blueprint import Blueprint
+from .layout import Layout
 
-class Logic(Blueprint):
-
-    def __init__(self, component:QWidget):
-        self._map_widgets(component)
+class Logic:
+    def __init__(self, ui: Layout):
+        self.ui: Layout = ui
 
     def change_url(self) -> None:
-        url = self.url_input.text()
-        self.eWebPage.setUrl(QUrl(url))
+        url = self.ui.url_input.text()
+        self.ui.eWebPage.setUrl(QUrl(url))
 
-    def load_url(self, url:str):
-        self.eWebPage.setUrl(QUrl(url))
+    def load_url(self, url):
+        self.ui.eWebPage.setUrl(QUrl(url))
         script = """
         document.cookie = "subscribed=true";
         localStorage.setItem("loggedIn", "true");
         """
         
-        self.eWebPage.loadFinished.connect(lambda: self.eWebPage.page().runJavaScript(script))
+        self.ui.eWebPage.loadFinished.connect(lambda: self.ui.eWebPage.page().runJavaScript(script))
 
-    def click_element(self, xpath:str) -> None:
+    def click_element(self, xpath):
         print(f"Clicking element with XPath: {xpath}")
         self.execute_js(xpath, "element.click")
-    
+
     def change_value_element(self,xpath, new_value):
-        """
-        change value
-        """
         print(f"Editing element with XPath: {xpath}")
         self.execute_js(xpath, f'element.value = "{new_value}"')
 
@@ -107,7 +102,7 @@ class Logic(Blueprint):
                 {action_js};
             }}
         """
-        self.eWebPage.page().runJavaScript(script)
+        self.ui.eWebPage.page().runJavaScript(script)
 
     def activate_design_mode(self):
         """
@@ -117,13 +112,13 @@ class Logic(Blueprint):
         toggle_js = """
         document.designMode = (document.designMode === 'on') ? 'off' : 'on';
         """
-        self.eWebPage.page().runJavaScript(toggle_js)
+        self.ui.eWebPage.page().runJavaScript(toggle_js)
 
     def activate_devtools(self):
-        if self.devtools_view.isVisible():
-            self.eWebPage.page().setDevToolsPage(None)
-            self.devtools_view.hide()
+        if self.ui.devtools_view.isVisible():
+            self.ui.eWebPage.page().setDevToolsPage(None)
+            self.ui.devtools_view.hide()
         else:
-            self.eWebPage.page().setDevToolsPage(self.devtools_view.page())
-            self.devtools_view.show()
+            self.ui.eWebPage.page().setDevToolsPage(self.ui.devtools_view.page())
+            self.ui.devtools_view.show()
             

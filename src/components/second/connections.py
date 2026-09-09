@@ -1,9 +1,7 @@
 from .logic import Logic
-from .blueprint import Blueprint
+from .layout import Layout
 
-class Connections(Blueprint):
-    def __init__(self, component, logic: Logic):
-        super().__init__()
-        self._map_widgets(component)
+class Connections:
+    def __init__(self, ui: Layout, logic: Logic):
+        self.ui = ui
         self.logic = logic
-

@@ -3,31 +3,21 @@ from PyQt6.QtWidgets import *
 from PyQt6.QtGui import *
 
 from typing import Literal
-from src.contracts.component_interface import *
 
 Orientation = Literal["horizontal", "vertical"]
 LayoutType = Literal["group", "splitter", "tabs", "grid", "stacked"]
 
-
-class LayoutBuilder():
+class UiManager(QWidget):
     def __init__(self):
         super().__init__()
-
-    def apply_layout(self, component:ComponentInterface, structure: StructureInterface):
-        layout = self.build_layout(structure.layout_data)
-        
-        layout.setContentsMargins(0, 0, 0, 0)
-        component.setLayout(layout)
+        self.setWindowTitle("App UI")
+        self.resize(1000, 600)
+        self.setup_stylesheets()
+        self.widget_layout = None
 
     def build_layout(self, data) -> QWidget | QLayout:
-        # if isinstance(data, str):
-        #     return getattr(self, data)  # user widgets expected here
-
-        if isinstance(data, QWidget):
-            return data
-        elif isinstance(data, str):
-            return getattr(self, data)
-
+        if isinstance(data, str):
+            return getattr(self, data)  # user widgets expected here
 
         if isinstance(data, list):
             layout = QVBoxLayout()
@@ -66,11 +56,11 @@ class LayoutBuilder():
                 for item in children:
                     w = self.build_layout(item)
                     if isinstance(w, QWidget):
-                        layout.addWidget(w) # bloats space --> layout.addWidget(w,  stretch=1)
+                        layout.addWidget(w,  stretch=1)
                     else:
                         container = QWidget()
                         container.setLayout(w)
-                        layout.addWidget(container) # bloats space --> layout.addWidget(container, stretch=1)
+                        layout.addWidget(container, stretch=1)
 
                 # layout.setContentsMargins(0, 0, 0, 0)
                 # layout.setSpacing(0)
@@ -149,8 +139,7 @@ class LayoutBuilder():
                 info = data["form"]
                 layout = QFormLayout()
                 for label, widget_name in info["children"]:
-                    # widget = getattr(self, widget_name)
-                    widget = self.build_layout(widget_name)
+                    widget = getattr(self, widget_name)
                     layout.addRow(label, widget)
                 return layout
 
@@ -173,13 +162,25 @@ class LayoutBuilder():
 
                 return scroll_area
 
-        raise TypeError(f"Invalid type in set_layout:  | isQWidget:{isinstance(data, QWidget)} | isQLayout:{isinstance(data, QLayout)} | = Given TYPE: {type(data)}")
+        raise TypeError("Invalid layout data")
+
+
+
+    def apply_layout(self, layout_data):
+        layout_or_widget = self.build_layout(layout_data)
+
+        if isinstance(layout_or_widget, QWidget):
+            # If it's already a widget with its own layout, set it as central widget
+            self.setLayout(QVBoxLayout())  # force minimal root layout if needed
+            self.layout().addWidget(layout_or_widget)
+            # self.layout().setContentsMargins(0, 0, 0, 0)
+            # self.layout().setSpacing(0)
+        else:
+            layout_or_widget.setContentsMargins(0, 0, 0, 0)
+            # layout_or_widget.setSpacing(0)
+            self.setLayout(layout_or_widget)
 
     def group(self, orientation: Orientation = None, children: list | None = None):
-        """ 
-        A simple way to create a group of widgets
-        - Helpful for things like making differnt orientations of widgets in the same component
-        """
         return {
             "group": {
                 "orientation": orientation,
@@ -188,10 +189,6 @@ class LayoutBuilder():
         }
 
     def box(self, orientation: Orientation = None, title: str | None = None,children: list | None = None):
-        """
-        Functions like group but with an optional title for a group of widgets
-        - Adds a nice border around the group
-        """
         return {
             "box": {
                 "title":title,
@@ -201,10 +198,6 @@ class LayoutBuilder():
         }
 
     def splitter(self, orientation: Orientation = None, children: list | None = None):
-        """
-        Will add a draggable splitter bar between each widget.
-        - The widgets will be stacked with a spliter line in that orientation 
-        """
         return {
             "splitter": {
                 "orientation": orientation,
@@ -213,11 +206,6 @@ class LayoutBuilder():
         }
 
     def tabs(self, tab_labels: list = None, children: list | None = None):
-        """
-        Will make a new tab for each widget in children
-        - tab labels and tab widgets are not matched like form (label, widget)
-        - You will need to make sure order of widgets follows order of labels
-        """
         return {
             "tabs": {
                 "tab_labels": tab_labels,
@@ -242,16 +230,12 @@ class LayoutBuilder():
         }
 
     def form(self, children: list[tuple[str, str]]):
-        """
-        A way to make label:widget pairings as one row
-        - Children are made as (label, widget)
-        - Stacks vertically for each paring
-        """
         return {
             "form": {
                 "children": children
             }
         }
+
 
     def scroll(self, child):
         return {
@@ -259,3 +243,48 @@ class LayoutBuilder():
                 "child": child
             }
         }
+
+
+    # def tabs(self, *children, tab_labels=None):
+    #     return {"tabs": {"children": list(children), "tab_labels": tab_labels}}
+
+    # def splitter(self, *children, orientation="horizontal"):
+    #     return {"splitter": {"orientation": orientation, "children": list(children)}}
+
+    # def group(self, *children, orientation="horizontal"):
+    #     return {"group": {"orientation": orientation, "children": list(children)}}
+
+    # def box(self, *children, orientation="horizontal", title=None):
+    #     return {"box": {"title": title, "orientation": orientation, "children": list(children)}}
+
+    # def grid(self, *children, rows=1, columns=1):
+    #     return {"grid": {"rows": rows, "columns": columns, "children": list(children)}}
+
+    # def stacked(self, *children):
+    #     return {"stacked": {"children": list(children)}}
+
+
+    def show_window(self):
+        self.show()
+
+    def setup_stylesheets(self):
+
+        self.setStyleSheet("""
+            QMainWindow {
+                background-color: #1a0d1c;
+            }
+            QLabel {
+                background-color: #AAAAAA;
+            }
+
+        """)
+    def print_margins_recursive(self, widget: QWidget):
+        layout = widget.layout()
+        if layout:
+            margins = layout.contentsMargins()
+            print(f"{widget.__class__.__name__} margins:", margins.left(), margins.top(), margins.right(), margins.bottom(), "spacing:", layout.spacing())
+            for i in range(layout.count()):
+                item = layout.itemAt(i)
+                child = item.widget()
+                if child:
+                    self.print_margins_recursive(child)
