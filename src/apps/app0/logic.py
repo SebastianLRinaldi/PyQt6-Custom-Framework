@@ -16,3 +16,5 @@ class Logic(BluePrint):
 
     def __init__(self, component):
         self._map_widgets(component)
+
+        self.temp.time

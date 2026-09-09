@@ -4,8 +4,9 @@ from .structure import Structure
 from .logic import Logic
 from .connections import Connections
 from .blueprint import Blueprint
+from .logicblueprint import LogicBlueprint
 
-class Component(QWidget, Blueprint):
+class Component(QWidget, Blueprint, LogicBlueprint):
     def __init__(self):
         super().__init__()
         self._init_widgets()

@@ -8,6 +8,7 @@ class BluePrint:
     btn1: QPushButton
     another_widget: BasicNew
     web_widget: Web
+    temp: Temp
 
     def _map_widgets(self, source):
         """

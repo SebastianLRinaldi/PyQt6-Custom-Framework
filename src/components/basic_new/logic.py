@@ -7,7 +7,7 @@ from .blueprint import Blueprint
 
 class Logic(Blueprint):
 
-    def __init__(self, component):
+    def __init__(self, component:QWidget):
         self.component = component
         self._map_widgets(component)
 

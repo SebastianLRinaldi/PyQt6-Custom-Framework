@@ -5,8 +5,9 @@ from PyQt6.QtGui import *
 from src.apps import *
 
 class Blueprint:
-    stack: QStackedWidget
-    app: App0
+    stack: QStackedWidget #Needed only for a stacked home
+
+    app: App0 # replace with with the other apps
 
     def _map_widgets(self, source):
         """

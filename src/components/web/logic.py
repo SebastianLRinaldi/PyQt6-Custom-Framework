@@ -9,14 +9,14 @@ from .blueprint import Blueprint
 
 class Logic(Blueprint):
 
-    def __init__(self, component):
+    def __init__(self, component:QWidget):
         self._map_widgets(component)
 
     def change_url(self) -> None:
         url = self.url_input.text()
         self.eWebPage.setUrl(QUrl(url))
 
-    def load_url(self, url):
+    def load_url(self, url:str):
         self.eWebPage.setUrl(QUrl(url))
         script = """
         document.cookie = "subscribed=true";
@@ -25,11 +25,14 @@ class Logic(Blueprint):
         
         self.eWebPage.loadFinished.connect(lambda: self.eWebPage.page().runJavaScript(script))
 
-    def click_element(self, xpath):
+    def click_element(self, xpath:str) -> None:
         print(f"Clicking element with XPath: {xpath}")
         self.execute_js(xpath, "element.click")
-
+    
     def change_value_element(self,xpath, new_value):
+        """
+        change value
+        """
         print(f"Editing element with XPath: {xpath}")
         self.execute_js(xpath, f'element.value = "{new_value}"')
 

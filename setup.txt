@@ -12,13 +12,15 @@ Constants:UPPER_SNAKE_CASE
 
 1. python -m venv .venv
 
-2. .venv\Scripts\activate
+2. .venv\Scripts\activate (might have to reopen the terminal)
 
 2.1. Dont hit add to workspace vscode pop up
 
 3. Close termainl 
 
-3.1. Select venv interpreter
+3.1.1 Make or Open any .py in vs code
+
+3.1.2 Select venv interpreter - bottom right 
 
 3.2. relaunch the terminal 
   (venv should show in terminal)
